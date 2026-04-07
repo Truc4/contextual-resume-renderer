@@ -1,0 +1,39 @@
+# Cover Letter Mappings Template
+# Maps each requirement to a paragraph about your experience with that skill/requirement
+# Copy this file to cover_letter.yaml and customize with your own experience
+
+# PERSONALIZED/PASSION SECTION (optional)
+# This appears after the opening paragraph and before the skill paragraphs
+# Use this to express what excites you about the role, company, or opportunity
+_passion:
+  paragraph: "I am particularly drawn to this position because [explain what excites you about this specific role/company]. Your organization's [mention something specific about the company] aligns perfectly with my professional values and career goals."
+
+# SKILL MAPPINGS
+# Add an entry for each requirement in your requirements.yaml file
+# These paragraphs will be included if that requirement matches
+python:
+  paragraph: "I have extensive experience with Python, using it to build [describe what you've built]. My expertise includes [mention specific areas like web frameworks, data processing, etc.]."
+
+javascript:
+  paragraph: "I have worked with JavaScript for [number of years], building [types of applications]. I am experienced with [mention libraries, frameworks, or tools]."
+
+react:
+  paragraph: "I have built numerous applications using React, creating responsive components and managing state effectively. My experience includes [mention specific React features or patterns]."
+
+sql:
+  paragraph: "I have strong expertise with SQL and relational databases, including [mention specific skills like schema design, query optimization, etc.]."
+
+docker:
+  paragraph: "I have used Docker to containerize applications, ensuring consistency across development and production environments. My experience includes [mention container orchestration or related tools]."
+
+problem solving:
+  paragraph: "I pride myself on my ability to solve complex technical problems systematically. I approach challenges by [describe your approach to problem-solving]."
+
+communication:
+  paragraph: "I communicate effectively with both technical and non-technical stakeholders, ensuring clear understanding of requirements and progress."
+
+team leadership:
+  paragraph: "I have experience leading development teams, focusing on [mention your leadership approach and outcomes]."
+
+# For each requirement in your requirements.yaml, add a corresponding entry here
+# The key should match the requirement name (case-insensitive)

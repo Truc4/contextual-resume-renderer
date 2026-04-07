@@ -1,0 +1,16 @@
+#!/bin/bash
+# Cover letter generation command
+
+source venv/bin/activate
+
+# Auto-detect requirements file
+if [ -f "data/requirements.yaml" ]; then
+  REQUIREMENTS_FILE="data/requirements.yaml"
+elif [ -f "data/requirements.txt" ]; then
+  REQUIREMENTS_FILE="data/requirements.txt"
+else
+  echo "Error: No requirements file found (data/requirements.yaml or data/requirements.txt)"
+  exit 1
+fi
+
+python cover_letter.py "$REQUIREMENTS_FILE" "$@"
