@@ -16,10 +16,10 @@ def load_contextual_cover_letter(requirements_file, cover_letter_file, personal_
 
     if isinstance(requirements_data, dict) and 'requirements' in requirements_data:
         requirements_list = requirements_data['requirements']
-        requirements = [req['name'] for req in requirements_list]
+        requirements = [(req['name'], req.get('importance', 5)) for req in requirements_list]
     else:
         requirements_text = requirements_path.read_text()
-        requirements = [line.strip() for line in requirements_text.split('\n') if line.strip()]
+        requirements = [(line.strip(), 5) for line in requirements_text.split('\n') if line.strip()]
 
     # Load cover letter mappings
     cover_letter_path = Path(cover_letter_file)
@@ -40,27 +40,28 @@ def load_contextual_cover_letter(requirements_file, cover_letter_file, personal_
     if cover_letter_data.get('_passion'):
         passion = cover_letter_data['_passion'].get('paragraph') if isinstance(cover_letter_data['_passion'], dict) else cover_letter_data['_passion']
 
-    # Collect paragraphs for matched requirements
-    paragraphs = []
-    for req in requirements:
+    # Collect paragraphs for matched requirements (with importance scores)
+    paragraphs_with_importance = []
+    for req, importance in requirements:
         req_lower = req.lower()
         # Find matching mapping (case-insensitive)
         for mapping_key in cover_letter_data.keys():
             if mapping_key.lower() == req_lower:
                 mapping = cover_letter_data[mapping_key]
                 if isinstance(mapping, dict) and 'paragraph' in mapping:
-                    paragraphs.append(mapping['paragraph'])
+                    paragraphs_with_importance.append({
+                        'text': mapping['paragraph'],
+                        'importance': importance
+                    })
                 break
 
-    # Get job title from requirements data if available
-    job_title = 'the position'
-    if isinstance(requirements_data, dict) and 'job_title' in requirements_data:
-        job_title = requirements_data['job_title']
+    # Sort by importance and take top 5
+    paragraphs_with_importance.sort(key=lambda x: x['importance'], reverse=True)
+    paragraphs = [p['text'] for p in paragraphs_with_importance[:5]]
 
     return {
         'paragraphs': paragraphs,
         'passion': passion,
-        'job_title': job_title,
         'name': personal_data.get('name', 'Your Name'),
         'email': personal_data.get('email', 'your.email@example.com'),
         'phone': personal_data.get('phone', '(123) 456-7890'),
@@ -97,10 +98,6 @@ def generate(requirements_file, cover_letter, personal, hiring_manager, job_titl
     # Load data
     data = load_contextual_cover_letter(requirements_file, cover_letter, personal)
 
-    # Use provided job title or fall back to detected one
-    if job_title:
-        data['job_title'] = job_title
-
     # Determine output path
     if not output:
         output = 'output/cover_letter.txt'
@@ -110,8 +107,16 @@ def generate(requirements_file, cover_letter, personal, hiring_manager, job_titl
 
     # Build cover letter
     letter = f"{date.today().strftime('%B %d, %Y')}\n\n"
-    letter += f"Dear {hiring_manager},\n\n"
-    letter += f"I am writing to express my strong interest in the {data['job_title']} position at your organization. "
+
+    # Use brackets for defaults so user knows to replace them
+    hiring_manager_display = hiring_manager if hiring_manager != 'Hiring Manager' else '[Hiring Manager]'
+    letter += f"Dear {hiring_manager_display},\n\n"
+
+    # Build opening sentence with job title
+    if job_title:
+        letter += f"I am writing to express my strong interest in the {job_title} position at your organization. "
+    else:
+        letter += f"I am writing to express my strong interest in [the position] at your organization. "
     letter += f"I am confident that my skills and experience make me an excellent fit for this role.\n\n"
 
     # Add passion/personalized section if it exists
