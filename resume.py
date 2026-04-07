@@ -89,7 +89,7 @@ def filter_either_or_requirements(requirements, mappings, importance_map):
     return filtered_requirements
 
 
-def load_contextual_resume(requirements_file, mappings_file, roles_file=None):
+def load_contextual_resume(requirements_file, mappings_file, roles_file=None, personal_file=None):
     """Load requirements and mappings, collect sections and skills."""
     # Load requirements
     requirements_path = Path(requirements_file)
@@ -126,6 +126,13 @@ def load_contextual_resume(requirements_file, mappings_file, roles_file=None):
         roles_path = Path(roles_file)
         if roles_path.exists():
             roles_data = yaml.safe_load(roles_path.read_text()) or {}
+
+    # Load personal data if provided
+    personal_data = {}
+    if personal_file:
+        personal_path = Path(personal_file)
+        if personal_path.exists():
+            personal_data = yaml.safe_load(personal_path.read_text()) or {}
 
     # Initialize data structure
     data = {
@@ -172,9 +179,9 @@ def load_contextual_resume(requirements_file, mappings_file, roles_file=None):
     summaries_with_importance.sort(key=lambda x: x['importance'], reverse=True)
     data['summaries'] = [s['text'] for s in summaries_with_importance[:5]]
 
-    # Build jobs list with selected role titles
-    if roles_data.get('jobs'):
-        for job_key, job_config in roles_data['jobs'].items():
+    # Build jobs list with selected role titles from personal data
+    if personal_data.get('jobs'):
+        for job_key, job_config in personal_data['jobs'].items():
             job = {
                 'company': job_config['company'],
                 'dates': job_config['dates'],
@@ -183,6 +190,24 @@ def load_contextual_resume(requirements_file, mappings_file, roles_file=None):
             }
             data['jobs'].append(job)
 
+    # Add personal contact info to data
+    if personal_data.get('name'):
+        data['name'] = personal_data['name']
+    if personal_data.get('location'):
+        data['location'] = personal_data['location']
+    if personal_data.get('email'):
+        data['email'] = personal_data['email']
+    if personal_data.get('phone'):
+        data['phone'] = personal_data['phone']
+    if personal_data.get('github'):
+        data['github'] = personal_data['github']
+    if personal_data.get('linkedin'):
+        data['linkedin'] = personal_data['linkedin']
+    if personal_data.get('portfolio'):
+        data['portfolio'] = personal_data['portfolio']
+    if personal_data.get('education'):
+        data['education'] = personal_data['education']
+
     return data
 
 
@@ -190,11 +215,12 @@ def load_contextual_resume(requirements_file, mappings_file, roles_file=None):
 @click.argument('requirements_file', type=click.Path(exists=True), required=False)
 @click.option('--mappings', default=None, help='Path to mappings YAML file (auto-detected if not provided)')
 @click.option('--roles', default=None, help='Path to roles YAML file (auto-detected if not provided)')
+@click.option('--personal', default=None, help='Path to personal data YAML file (auto-detected if not provided)')
 @click.option('--template', default='template/contextual.html.j2', help='Path to Jinja2 template')
 @click.option('--output', default=None, help='Output file path')
 @click.option('--html-only', is_flag=True, help='Output HTML only (no PDF rendering)')
 @click.option('--open', 'open_after', is_flag=True, help='Open PDF after rendering')
-def render(requirements_file, mappings, roles, template, output, html_only, open_after):
+def render(requirements_file, mappings, roles, personal, template, output, html_only, open_after):
     """Render a resume from requirements and mappings files."""
 
     # Auto-detect requirements file if not provided
@@ -216,8 +242,13 @@ def render(requirements_file, mappings, roles, template, output, html_only, open
         req_path = Path(requirements_file)
         roles = str(req_path.parent / 'roles.yaml')
 
-    # Load data from requirements + mappings + roles
-    data = load_contextual_resume(requirements_file, mappings, roles)
+    # Auto-detect personal file if not provided
+    if not personal:
+        req_path = Path(requirements_file)
+        personal = str(req_path.parent / 'personal.yaml')
+
+    # Load data from requirements + mappings + roles + personal
+    data = load_contextual_resume(requirements_file, mappings, roles, personal)
 
     # Set up Jinja2 environment
     template_dir = str(Path(template).parent.resolve())

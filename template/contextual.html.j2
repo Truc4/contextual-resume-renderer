@@ -10,12 +10,16 @@
 
 <header>
   <div class="header-title">
-    Curt Reyes
+    {{ name or "Your Name" }}
     {% if position %} - {{ position }}{% endif %}
   </div>
-  <div class="header-location">Logan, Utah, US</div>
+  {% if location %}<div class="header-location">{{ location }}</div>{% endif %}
   <div class="header-contact">
-    curt.reyes.dev@gmail.com | (435) 374-2556 | <a href="https://github.com/truc4">github.com/truc4</a> | <a href="https://linkedin.com/in/curt-reyes">linkedin.com/in/curt-reyes</a> | <a href="http://portfolio.curtreyes.com">portfolio.curtreyes.com</a>
+    {% if email %}{{ email }}{% endif %}
+    {% if phone %}{{ " | " }}{{ phone }}{% endif %}
+    {% if github %}<span> | <a href="{{ github }}">{{ github.replace('https://', '').replace('http://', '') }}</a></span>{% endif %}
+    {% if linkedin %}<span> | <a href="{{ linkedin }}">{{ linkedin.replace('https://', '').replace('http://', '') }}</a></span>{% endif %}
+    {% if portfolio %}<span> | <a href="{{ portfolio }}">{{ portfolio.replace('https://', '').replace('http://', '') }}</a></span>{% endif %}
   </div>
 </header>
 
@@ -57,12 +61,14 @@
 </section>
 
 <!-- EDUCATION -->
+{% if education %}
 <section>
   <h2>EDUCATION</h2>
   <p>
-    <strong>Utah State University - Computer Science Bachelor's</strong> - April 2026
+    {% if education.bachelor %}{{ education.bachelor }}{% endif %}
   </p>
 </section>
+{% endif %}
 
 </body>
 </html>

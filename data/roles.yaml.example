@@ -1,0 +1,34 @@
+# Roles Configuration Template
+#
+# This file defines how job titles are selected based on matched requirements.
+# The main_position section determines the title at the top of your resume.
+
+# Main position title shown at the top of resume
+main_position:
+  default: "Software Developer"  # Default if no requirements match
+  options:
+    # Each option can have requirements that trigger it
+    # If all requirements are found in the job posting, that title is used
+    - title: "Software Developer"
+      default: true  # This is the fallback
+
+    - title: "Full Stack Developer"
+      requirements: ["Full Stack Developer"]
+
+    - title: "Full Stack Engineer"
+      requirements: ["Full Stack Engineer"]
+
+    - title: "Backend Developer"
+      requirements: ["Backend Developer"]
+
+    - title: "Backend Engineer"
+      requirements: ["Backend Engineer"]
+
+    - title: "Frontend Developer"
+      requirements: ["Frontend Developer"]
+
+    - title: "Frontend Engineer"
+      requirements: ["Frontend Engineer"]
+
+    - title: "Software Engineer"
+      requirements: ["Software Engineer"]

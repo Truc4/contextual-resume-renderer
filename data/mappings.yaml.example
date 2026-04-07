@@ -1,0 +1,142 @@
+# Mappings Configuration Template
+#
+# This file maps each requirement to how it appears on your resume.
+# When a requirement appears in requirements.yaml, the system looks it up here and:
+# 1. Collects any 'summary' text to include in SUMMARY section (top 5 by importance)
+# 2. Marks items with 'skill: true' to include in SKILLS section
+# 3. Uses 'either_or: "group"' to filter mutually exclusive skills
+#
+# Layout:
+# requirement_name:
+#   summary: "Text to appear in SUMMARY section"
+#   skill: true                    # Include in SKILLS section
+#   either_or: "group_name"        # Mutually exclusive group (only highest importance shown)
+#
+# Rules:
+# - If a requirement has 'skill: true', it appears in SKILLS (case-sensitive)
+# - If a requirement has 'summary:', that text appears in SUMMARY section
+# - If a requirement has 'either_or: "group"', only one from the group is kept
+#   (the one with highest importance in requirements.yaml)
+# - A requirement can have multiple fields (e.g., both summary and skill)
+#
+# Example:
+#   JavaScript:
+#     skill: true
+#     summary: "6+ years building applications with JavaScript across the full stack."
+#     either_or: "js_family"
+
+# Role requirements - map to summary text
+software engineer:
+  summary: "Software Engineer with 5+ years of full stack web development experience."
+  either_or: software
+
+software developer:
+  summary: "Software Developer with 5+ years of full stack web development experience."
+  either_or: software
+
+backend engineer:
+  summary: "Backend Engineer specializing in server-side architecture and database design."
+  either_or: backend
+
+backend developer:
+  summary: "Backend Developer specializing in server-side architecture and database design."
+  either_or: backend
+
+frontend engineer:
+  summary: "Frontend Engineer with expertise in building responsive user interfaces."
+  either_or: frontend
+
+frontend developer:
+  summary: "Frontend Developer with expertise in building responsive user interfaces."
+  either_or: frontend
+
+# Language skills
+python:
+  skill: true
+
+javascript:
+  skill: true
+  summary: "6+ years building applications with JavaScript across the full stack."
+  either_or: "js_family"
+
+typescript:
+  skill: true
+  summary: "3+ years building applications with TypeScript across the full stack."
+  either_or: "js_family"
+
+java:
+  skill: true
+
+c#:
+  skill: true
+
+rust:
+  skill: true
+
+# Frameworks & tools
+react:
+  skill: true
+
+angular:
+  skill: true
+
+vue:
+  skill: true
+
+node.js:
+  skill: true
+
+docker:
+  skill: true
+
+aws:
+  skill: true
+
+git:
+  skill: true
+
+# Backend & Database
+sql:
+  skill: true
+  summary: "5+ years working with relational databases, including migrations and procedures."
+
+postgresql:
+  skill: true
+
+api development:
+  skill: true
+  summary: "Designs and builds RESTful APIs that power full-stack applications."
+
+# Soft skills
+problem solving:
+  skill: true
+  summary: "Strong analytical and problem-solving abilities."
+
+communication:
+  skill: true
+  summary: "Strong communication and collaboration skills across teams."
+
+team leadership:
+  skill: true
+  summary: "Experienced in leading and mentoring development teams."
+
+agile:
+  skill: true
+  summary: "Experience working in Agile/Scrum environments."
+
+# Testing
+testing:
+  skill: true
+
+test-driven development:
+  skill: true
+  summary: "Applies test-driven development practices to ensure reliable, maintainable code."
+
+# Architecture
+domain-driven design:
+  skill: true
+  summary: "Structures applications around core business domains and real-world entities."
+
+layered architecture:
+  skill: true
+  summary: "Builds systems with clear separation between frontend, backend, and data layers."

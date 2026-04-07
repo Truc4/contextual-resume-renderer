@@ -1,0 +1,33 @@
+# Personal Resume Data Template
+# Copy this file to personal.yaml and fill in your own data
+# personal.yaml is gitignored — it won't be committed to version control
+
+# Contact information
+name: "Your Name"
+location: "City, State, Country"
+email: "your.email@example.com"
+phone: "(123) 456-7890"
+github: "https://github.com/username"
+linkedin: "https://linkedin.com/in/your-profile"
+portfolio: "https://yourportfolio.com"
+
+# Education
+education:
+  bachelor: "Graduated from [University Name] with a [Degree] in [Field]."
+
+# Job history
+jobs:
+  company_key:
+    company: "Company Name"
+    dates: "Start Month Year - End Month Year"
+    default_role: "Your Job Title"
+    bullets:
+      - "Achievement or responsibility 1"
+      - "Achievement or responsibility 2"
+    role_options:
+      - title: "Your Job Title"
+        default: true
+      - title: "Alternative Title for Full Stack Role"
+        requirements: ["Full Stack Developer"]
+      - title: "Backend-focused Alternative"
+        requirements: ["Backend Developer"]

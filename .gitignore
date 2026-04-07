@@ -8,3 +8,8 @@ __pycache__/
 venv/
 *.pdf
 .DS_Store
+data/personal.yaml
+data/requirements.yaml
+data/roles.yaml
+data/mappings.yaml
+data/all_requirements.txt
