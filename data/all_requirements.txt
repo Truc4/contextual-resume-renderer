@@ -1,0 +1,78 @@
+# Target job requirements/keywords
+# These are things the job posting is looking for.
+# The system intelligently maps these to your resume variants.
+
+# Job titles (matches to job title variants)
+Software Engineer
+Senior Developer
+Full Stack Engineer
+Full Stack Developer
+Backend Engineer
+Backend Developer
+Frontend Engineer
+Frontend Developer
+DevOps Engineer
+
+# Technologies & skills
+C#
+SQL
+JavaScript
+TypeScript
+Python
+Java
+Rust
+C++
+C
+Go
+Odin
+
+# Frameworks & tools
+ASP.NET
+.NET
+Angular
+React
+Vue
+Node.js
+Docker
+AWS
+Azure
+Git
+
+# Soft skills
+Team Leadership
+Project Management
+Communication
+Problem Solving
+Mentoring
+Agile
+
+# Education
+Bachelor
+
+# Databases
+PostgreSQL
+Database
+
+# API / Backend
+API Development
+
+# Testing / Engineering Practices
+Testing
+Test-Driven Development
+
+# Architecture
+Domain-Driven Design
+Layered Architecture
+
+# Observability / Product
+Analytics
+Monitoring
+
+# Integrations
+Messaging APIs
+
+# AI / Modern Tooling
+LLM Tooling
+
+# Frameworks / Platforms (optional but useful)
+Next.js

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="file://{{ template_dir }}/style.css">
+  <title>Resume</title>
+</head>
+<body>
+
+<header>
+  <div class="header-title">
+    Curt Reyes
+    {% if position %} - {{ position }}{% endif %}
+  </div>
+  <div class="header-location">Logan, Utah, US</div>
+  <div class="header-contact">
+    curt.reyes.dev@gmail.com | (435) 374-2556 | <a href="https://github.com/truc4">github.com/truc4</a> | <a href="https://linkedin.com/in/curt-reyes">linkedin.com/in/curt-reyes</a> | <a href="http://portfolio.curtreyes.com">portfolio.curtreyes.com</a>
+  </div>
+</header>
+
+<!-- SUMMARY -->
+{% if summaries %}
+<section>
+  <h2>SUMMARY</h2>
+  <p>{{ summaries | join(" ") }}</p>
+</section>
+{% endif %}
+
+<!-- SKILLS -->
+{% if skills %}
+<section>
+  <h2>SKILLS</h2>
+  <p>{{ skills | join(", ") }}</p>
+</section>
+{% endif %}
+
+<!-- WORK EXPERIENCE -->
+<section>
+  <h2>WORK EXPERIENCE</h2>
+
+  {% for job in jobs %}
+  <div class="job">
+    <div class="job-header">
+      <div class="job-company">{{ job.company }}</div>
+      <div class="job-dates">{{ job.dates }}</div>
+    </div>
+    <div class="job-role">{{ job.role }}</div>
+    <ul class="job-bullets">
+      {% for bullet in job.bullets %}
+      <li>{{ bullet }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endfor %}
+
+</section>
+
+<!-- EDUCATION -->
+<section>
+  <h2>EDUCATION</h2>
+  <p>
+    <strong>Utah State University - Computer Science Bachelor's</strong> - April 2026
+  </p>
+</section>
+
+</body>
+</html>

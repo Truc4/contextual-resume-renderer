@@ -1,0 +1,92 @@
+# Main position title
+main_position:
+  default: "Software Developer"
+  options:
+    - title: "Software Developer"
+      default: true
+    - title: "Full Stack Developer"
+      requirements: ["Full Stack Developer"]
+    - title: "Full Stack Engineer"
+      requirements: ["Full Stack Engineer"]
+    - title: "Backend Developer"
+      requirements: ["Backend Developer"]
+    - title: "Backend Engineer"
+      requirements: ["Backend Engineer"]
+    - title: "Frontend Developer"
+      requirements: ["Frontend Developer"]
+    - title: "Frontend Engineer"
+      requirements: ["Frontend Engineer"]
+    - title: "Software Engineer"
+      requirements: ["Software Engineer"]
+
+# Job-specific role titles
+jobs:
+  ncham:
+    company: "National Center for Hearing Assessment and Management"
+    dates: "August 2022 - January 2026"
+    default_role: ".NET Developer"
+    bullets:
+      - "Lead developer for the Strata project, a web application for data aggregation. Using C# with ASP.NET MVC to add features and fix bugs."
+      - "Manage SQL database updates and migrations, using both proprietary and open source managers."
+    role_options:
+      - title: ".NET Developer"
+        default: true
+      - title: ".NET Developer"
+        requirements: ["Backend Developer"]
+      - title: ".NET Engineer"
+        requirements: ["Backend Engineer"]
+      - title: "Full Stack Developer"
+        requirements: ["Full Stack Developer"]
+      - title: "Full Stack Engineer"
+        requirements: ["Full Stack Engineer"]
+      - title: "Backend Developer"
+        requirements: ["Backend Developer"]
+      - title: "Backend Engineer"
+        requirements: ["Backend Engineer"]
+
+  jerran:
+    company: "Jerran Software"
+    dates: "April 2022 - July 2022"
+    default_role: "Full Stack Angular / Node.js Developer"
+    bullets:
+      - "Developed front-end features with Angular and managed backend APIs using Node.js for web projects."
+      - "Enhanced project architecture for long-term maintenance, focusing on robustness and efficiency."
+      - "Strengthened team collaboration and communication skills, ensuring seamless integration of project components."
+    role_options:
+      - title: "Full Stack Angular / Node.js Developer"
+        default: true
+      - title: "Full Stack Developer"
+        requirements: ["Full Stack Developer"]
+      - title: "Full Stack Engineer"
+        requirements: ["Full Stack Engineer"]
+      - title: "Frontend Developer"
+        requirements: ["Frontend Developer"]
+      - title: "Frontend Engineer"
+        requirements: ["Frontend Engineer"]
+      - title: "Backend Developer"
+        requirements: ["Backend Developer"]
+      - title: "Backend Engineer"
+        requirements: ["Backend Engineer"]
+
+  hfb:
+    company: "HFB Technologies"
+    dates: "June 2021 - January 2022"
+    default_role: "Web Developer / Designer"
+    bullets:
+      - "Designed and developed websites independently, leading projects and adhering to industry standards."
+      - "Expert in WordPress and open source focused workflow to design and develop professional websites."
+      - "Performed troubleshooting and updates as a web technician, maintaining high performance and customer satisfaction."
+    role_options:
+      - title: "Web Developer / Designer"
+        default: true
+
+  freelance:
+    company: "Freelance"
+    dates: "May 2018 - July 2020"
+    default_role: "Web Developer"
+    bullets:
+      - "Created web extensions for Twitch, focusing on user engagement and platform functionality."
+      - "Developed solutions using HTML, CSS, and JavaScript, adhering to industry standards and enhancing user experience."
+    role_options:
+      - title: "Web Developer"
+        default: true

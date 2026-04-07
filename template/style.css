@@ -1,0 +1,101 @@
+@page {
+  margin: 0.5in;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 11pt;
+  line-height: 1.4;
+  color: #222;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 8pt;
+  padding-bottom: 4pt;
+}
+
+.header-title {
+  font-size: 16pt;
+  font-weight: bold;
+  margin-bottom: 2pt;
+}
+
+.header-location {
+  font-size: 10pt;
+  margin-bottom: 2pt;
+}
+
+.header-contact {
+  font-size: 10pt;
+}
+
+.header-contact a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+section {
+  margin-top: 10pt;
+  margin-bottom: 6pt;
+}
+
+h2 {
+  font-size: 11pt;
+  font-weight: bold;
+  margin-bottom: 4pt;
+  padding-bottom: 2pt;
+  border-bottom: 1px solid #333;
+}
+
+.job {
+  margin-bottom: 10pt;
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2pt;
+}
+
+.job-company {
+  font-weight: bold;
+  font-size: 11pt;
+  flex: 1;
+}
+
+.job-dates {
+  text-align: right;
+  white-space: nowrap;
+  font-size: 10pt;
+  padding-left: 12pt;
+}
+
+.job-role {
+  font-weight: bold;
+  margin-top: 2pt;
+  margin-bottom: 3pt;
+}
+
+.job-bullets {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.job-bullets li {
+  margin-bottom: 2pt;
+  padding-left: 16pt;
+  text-indent: -8pt;
+}
+
+.job-bullets li:before {
+  content: "● ";
+  margin-right: 6pt;
+}
