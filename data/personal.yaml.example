@@ -13,7 +13,10 @@ portfolio: "https://yourportfolio.com"
 
 # Education
 education:
-  bachelor: "Graduated from [University Name] with a [Degree] in [Field]."
+  bachelor:
+    school: "University Name"
+    degree: "Bachelor's in Field"
+    graduation_date: "Month Year"
 
 # Job history
 jobs:

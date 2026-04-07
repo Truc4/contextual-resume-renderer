@@ -99,3 +99,25 @@ h2 {
   content: "● ";
   margin-right: 6pt;
 }
+
+.education {
+  margin-bottom: 10pt;
+}
+
+.education-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.education-school {
+  font-size: 11pt;
+  flex: 1;
+}
+
+.education-date {
+  text-align: right;
+  white-space: nowrap;
+  font-size: 10pt;
+  padding-left: 12pt;
+}

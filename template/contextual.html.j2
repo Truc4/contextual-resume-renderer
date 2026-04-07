@@ -64,9 +64,16 @@
 {% if education %}
 <section>
   <h2>EDUCATION</h2>
-  <p>
-    {% if education.bachelor %}{{ education.bachelor }}{% endif %}
-  </p>
+  {% if education.bachelor %}
+  <div class="education">
+    <div class="education-header">
+      <div class="education-school">
+        <strong>{{ education.bachelor.school }}</strong> - <strong>{{ education.bachelor.degree }}</strong>
+      </div>
+      {% if education.bachelor.graduation_date %}<div class="education-date">{{ education.bachelor.graduation_date }}</div>{% endif %}
+    </div>
+  </div>
+  {% endif %}
 </section>
 {% endif %}
 

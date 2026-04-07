@@ -34,6 +34,14 @@ software developer:
   summary: "Software Developer with 5+ years of full stack web development experience."
   either_or: software
 
+application developer:
+  summary: "Application Developer with 5+ years of full stack web development experience."
+  either_or: software
+
+web application developer:
+  summary: "Web Application Developer with 5+ years of full stack web development experience."
+  either_or: software
+
 backend engineer:
   summary: "Backend Engineer specializing in server-side architecture and database design."
   either_or: backend

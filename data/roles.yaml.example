@@ -12,6 +12,12 @@ main_position:
     - title: "Software Developer"
       default: true  # This is the fallback
 
+    - title: "Application Developer"
+      requirements: ["Application Developer"]
+
+    - title: "Web Application Developer"
+      requirements: ["Web Application Developer"]
+
     - title: "Full Stack Developer"
       requirements: ["Full Stack Developer"]
 
