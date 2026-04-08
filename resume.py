@@ -142,8 +142,9 @@ def load_contextual_resume(requirements_file, mappings_file, roles_file=None, pe
         'jobs': []
     }
 
-    # Collect summaries with importance for sorting
+    # Collect summaries and skills with importance for sorting
     summaries_with_importance = []
+    skills_with_importance = []
 
     # Select main position title based on requirements
     if roles_data.get('main_position'):
@@ -162,14 +163,17 @@ def load_contextual_resume(requirements_file, mappings_file, roles_file=None, pe
 
         if matching_key and matching_key in mappings:
             mapping = mappings[matching_key]
+            importance = importance_map.get(req, 5)  # get importance from requirements file
 
-            # If it's a skill, collect it
+            # If it's a skill, collect it with importance
             if mapping.get('skill'):
-                data['skills'].append(req)
+                skills_with_importance.append({
+                    'name': req,
+                    'importance': importance
+                })
 
-            # If it has a summary, collect it with importance from requirements
+            # If it has a summary, collect it with importance
             if 'summary' in mapping:
-                importance = importance_map.get(req, 5)  # get importance from requirements file
                 summaries_with_importance.append({
                     'text': mapping['summary'],
                     'importance': importance
@@ -178,6 +182,14 @@ def load_contextual_resume(requirements_file, mappings_file, roles_file=None, pe
     # Sort summaries by importance (descending) and take top 5
     summaries_with_importance.sort(key=lambda x: x['importance'], reverse=True)
     data['summaries'] = [s['text'] for s in summaries_with_importance[:5]]
+
+    # Sort skills by importance and include high-importance ones
+    # Include all skills with importance >= 7, or top 5-6 whichever is more
+    skills_with_importance.sort(key=lambda x: x['importance'], reverse=True)
+    high_importance_skills = [s['name'] for s in skills_with_importance if s['importance'] >= 7]
+    top_skills = [s['name'] for s in skills_with_importance[:6]]
+    # Use high importance skills if there are any, otherwise use top 6
+    data['skills'] = high_importance_skills if high_importance_skills else top_skills
 
     # Build jobs list with selected role titles from personal data
     if personal_data.get('jobs'):

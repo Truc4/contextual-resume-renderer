@@ -3,6 +3,12 @@ import click
 import yaml
 from pathlib import Path
 from datetime import date
+from jinja2 import Template
+from weasyprint import HTML
+import tempfile
+import subprocess
+import sys
+import os
 
 
 def load_contextual_cover_letter(requirements_file, cover_letter_file, personal_file=None):
@@ -68,14 +74,96 @@ def load_contextual_cover_letter(requirements_file, cover_letter_file, personal_
     }
 
 
+def build_cover_letter_text(data, hiring_manager, job_title, company):
+    """Build plain text cover letter."""
+    letter = f"{date.today().strftime('%B %d, %Y')}\n\n"
+
+    # Use default if not provided
+    if not hiring_manager:
+        hiring_manager = 'Hiring Manager'
+    letter += f"Dear {hiring_manager},\n\n"
+
+    # Build opening sentence dynamically based on what's provided
+    opening = "I am writing to express my strong interest in"
+    if job_title:
+        opening += f" the {job_title} position"
+        if company:
+            opening += f" at {company}"
+        else:
+            opening += " at your organization"
+    elif company:
+        opening += f" the position at {company}"
+    else:
+        opening += " the position at your organization"
+    opening += ". I am confident that my skills and experience make me an excellent fit for this role.\n\n"
+
+    letter += opening
+
+    # Add passion/personalized section if it exists
+    if data['passion']:
+        letter += f"{data['passion']}\n\n"
+
+    # Add requirement paragraphs
+    for para in data['paragraphs']:
+        letter += f"{para}\n\n"
+
+    # Closing
+    letter += f"I am excited about the opportunity to contribute to your team and would welcome the chance to discuss how I align with your needs. "
+    letter += f"Please feel free to contact me at {data['phone']} or {data['email']} at your convenience.\n\n"
+    letter += f"Thank you for considering my application. I look forward to hearing from you.\n\n"
+    letter += f"Sincerely,\n\n{data['name']}\n"
+
+    return letter
+
+
+def build_cover_letter_html(text):
+    """Convert plain text cover letter to HTML for PDF rendering."""
+    # Escape HTML entities
+    text = text.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+    # Convert paragraphs (double newlines)
+    paragraphs = text.split('\n\n')
+    html_content = '\n'.join(f'<p>{p.replace(chr(10), "<br>")}</p>' for p in paragraphs if p.strip())
+
+    html = f"""<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        @page {{
+            margin: 0.5in 1in;
+        }}
+        body {{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }}
+        p {{
+            margin: 0 0 12px 0;
+            text-align: justify;
+        }}
+    </style>
+</head>
+<body>
+{html_content}
+</body>
+</html>"""
+    return html
+
+
 @click.command()
 @click.argument('requirements_file', type=click.Path(exists=True), required=False)
 @click.option('--cover-letter', default=None, help='Path to cover letter mappings file (auto-detected if not provided)')
 @click.option('--personal', default=None, help='Path to personal data file (auto-detected if not provided)')
-@click.option('--hiring-manager', default='Hiring Manager', help='Name of hiring manager')
-@click.option('--job-title', default=None, help='Job title (auto-detected from requirements if not provided)')
-@click.option('--output', default=None, help='Output file path')
-def generate(requirements_file, cover_letter, personal, hiring_manager, job_title, output):
+@click.option('--hiring-manager', default=None, help='Name of hiring manager')
+@click.option('--position', '--job-title', default=None, help='Job position/title')
+@click.option('--company', default=None, help='Company name')
+@click.option('--output', default=None, help='Output file path (auto-detected if not provided)')
+@click.option('--format', type=click.Choice(['txt', 'pdf', 'both']), default='both', help='Output format')
+@click.option('--no-prompt', is_flag=True, help='Skip interactive prompts and use defaults/options')
+@click.option('--open', 'open_after', is_flag=True, help='Open PDF in browser after rendering')
+def generate(requirements_file, cover_letter, personal, hiring_manager, position, company, output, format, no_prompt, open_after):
     """Generate a cover letter from requirements and mappings."""
 
     # Auto-detect requirements file if not provided
@@ -98,44 +186,46 @@ def generate(requirements_file, cover_letter, personal, hiring_manager, job_titl
     # Load data
     data = load_contextual_cover_letter(requirements_file, cover_letter, personal)
 
+    # Interactive prompts for cover letter details
+    if not no_prompt:
+        if hiring_manager is None:
+            hiring_manager = click.prompt('Hiring Manager name', default='')
+        if position is None:
+            position = click.prompt('Position/Job Title', default='')
+        if company is None:
+            company = click.prompt('Company name', default='')
+
     # Determine output path
     if not output:
-        output = 'output/cover_letter.txt'
+        if company and position:
+            company_slug = company.lower().replace(' ', '_')
+            position_slug = position.lower().replace(' ', '_')
+            base_output = f"output/{company_slug}_{position_slug}_cover_letter"
+        else:
+            base_output = 'output/cover_letter'
 
-    out_path = Path(output)
-    out_path.parent.mkdir(parents=True, exist_ok=True)
+    # Build cover letter text (use provided values, empty strings for defaults)
+    letter = build_cover_letter_text(data, hiring_manager or '', position or '', company or '')
 
-    # Build cover letter
-    letter = f"{date.today().strftime('%B %d, %Y')}\n\n"
+    # Write outputs based on format
+    if format in ['txt', 'both']:
+        txt_output = Path(output or f"{base_output}.txt")
+        txt_output.parent.mkdir(parents=True, exist_ok=True)
+        txt_output.write_text(letter)
+        click.echo(f"Text cover letter written to {txt_output}")
 
-    # Use brackets for defaults so user knows to replace them
-    hiring_manager_display = hiring_manager if hiring_manager != 'Hiring Manager' else '[Hiring Manager]'
-    letter += f"Dear {hiring_manager_display},\n\n"
+    if format in ['pdf', 'both']:
+        pdf_output = Path(output or f"{base_output}.pdf") if output else Path(f"{base_output}.pdf")
+        pdf_output.parent.mkdir(parents=True, exist_ok=True)
+        html = build_cover_letter_html(letter)
+        HTML(string=html).write_pdf(str(pdf_output))
+        click.echo(f"PDF cover letter written to {pdf_output}")
 
-    # Build opening sentence with job title
-    if job_title:
-        letter += f"I am writing to express my strong interest in the {job_title} position at your organization. "
-    else:
-        letter += f"I am writing to express my strong interest in [the position] at your organization. "
-    letter += f"I am confident that my skills and experience make me an excellent fit for this role.\n\n"
-
-    # Add passion/personalized section if it exists
-    if data['passion']:
-        letter += f"{data['passion']}\n\n"
-
-    # Add requirement paragraphs
-    for para in data['paragraphs']:
-        letter += f"{para}\n\n"
-
-    # Closing
-    letter += f"I am excited about the opportunity to contribute to your team and would welcome the chance to discuss how my background, skills, and enthusiasm align with your needs. "
-    letter += f"Please feel free to contact me at {data['phone']} or {data['email']} at your convenience.\n\n"
-    letter += f"Thank you for considering my application. I look forward to hearing from you.\n\n"
-    letter += f"Sincerely,\n\n{data['name']}\n"
-
-    # Write to file
-    out_path.write_text(letter)
-    click.echo(f"Cover letter written to {out_path}")
+        # Open PDF if requested (detached from Python process)
+        if open_after:
+            opener = 'xdg-open' if sys.platform == 'linux' else 'open'
+            # Use Popen to detach from Python — killing Python won't kill the browser
+            subprocess.Popen([opener, str(pdf_output)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True)
 
 
 if __name__ == '__main__':

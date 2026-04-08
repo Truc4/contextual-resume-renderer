@@ -1,5 +1,5 @@
 #!/bin/bash
-# Simple render command — generates resume PDF from requirements.yaml + mappings.yaml
+# Render both resume and cover letter
 
 source venv/bin/activate
 
@@ -13,4 +13,31 @@ else
   exit 1
 fi
 
-python resume.py "$REQUIREMENTS_FILE" "$@"
+# Check if --open flag is present
+OPEN_FLAG=""
+for arg in "$@"; do
+  if [[ "$arg" == "--open" ]]; then
+    OPEN_FLAG="--open"
+    break
+  fi
+done
+
+echo "Generating resume..."
+python resume.py "$REQUIREMENTS_FILE" $OPEN_FLAG
+RESUME_STATUS=$?
+if [[ $RESUME_STATUS -ne 0 ]]; then
+  echo "Resume generation failed with status $RESUME_STATUS"
+  exit $RESUME_STATUS
+fi
+
+echo ""
+echo "Generating cover letter..."
+python cover_letter.py "$REQUIREMENTS_FILE" "$@"
+COVER_STATUS=$?
+if [[ $COVER_STATUS -ne 0 ]]; then
+  echo "Cover letter generation failed with status $COVER_STATUS"
+  exit $COVER_STATUS
+fi
+
+echo ""
+echo "Done!"
