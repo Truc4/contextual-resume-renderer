@@ -159,8 +159,10 @@ def load_contextual_resume(requirements_file, mappings_file, roles_file=None, pe
     skills_with_importance = []
 
     # Select main position title based on requirements
-    if roles_data.get('main_position'):
-        data['position'] = select_option(roles_data['main_position']['options'], requirements, importance_map)
+    # Check personal_data first, then roles_data for backwards compatibility
+    main_position_data = personal_data.get('main_position') or roles_data.get('main_position')
+    if main_position_data:
+        data['position'] = select_option(main_position_data['options'], requirements, importance_map)
 
     # Process each requirement for summaries and skills
     for req in requirements:

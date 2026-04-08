@@ -28,7 +28,7 @@ You write the content. This tool just shows only the parts that matter for each 
 The tool combines:
 - **requirements.yaml** - what the job needs (with importance weights)
 - **mappings.yaml** - how to present your skills and experience
-- **personal.yaml** - your job history and education (gitignored)
+- **personal.yaml** - your job history, education, and job title options (gitignored)
 - **template/contextual.html.j2** - HTML/CSS layout for the resume
 
 ## Installation
@@ -87,24 +87,24 @@ contextual-resume-renderer/
 │   ├── contextual.html.j2     # Jinja2 resume template
 │   └── style.css              # CSS styling
 └── data/
-    ├── personal.yaml          # Your job history & education
+    ├── personal.yaml          # Your job history, education, and job title options
     ├── personal.yaml.example  # Example to copy and customize
     ├── requirements.yaml      # Job requirements & importance
     ├── requirements.yaml.example  # Example to copy
     ├── mappings.yaml          # Skill/experience descriptions
     ├── mappings.yaml.example  # Example to copy
     ├── cover_letter.yaml      # Cover letter paragraph mappings
-    ├── cover_letter.yaml.example  # Example to copy
-    ├── roles.yaml             # Job title templates
-    └── roles.yaml.example     # Example to copy
+    └── cover_letter.yaml.example  # Example to copy
 ```
 
 ## Data Files Explained
 
 ### personal.yaml
-Contains your personal information:
-- Job history (companies, dates, titles, achievements)
+Contains your personal information and job title options:
+- Contact information (name, email, phone, GitHub, LinkedIn, portfolio)
+- Job history (companies, dates, titles, role options, achievements)
 - Education background
+- Main position title options (dynamically selected based on job requirements)
 - See `personal.yaml.example` for the structure to copy and customize
 
 ### requirements.yaml
@@ -139,9 +139,6 @@ See `mappings.yaml.example` for a template.
 Maps requirements to cover letter paragraphs you've written:
 - Each requirement key maps to a paragraph describing your experience
 - See `cover_letter.yaml.example` for the structure
-
-### roles.yaml
-Defines job title options based on requirements. Allows different titles to be selected depending on which skills are in the job posting. See `roles.yaml.example` for the structure.
 
 ## Customizing the Template
 
