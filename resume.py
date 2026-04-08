@@ -30,17 +30,29 @@ def default_output_path(data):
 
 
 
-def select_option(options, requirements):
-    """Select an option based on exact requirement matches."""
+def select_option(options, requirements, importance_map=None):
+    """Select an option based on exact requirement matches, preferring highest importance."""
     requirements_set = set(requirements)
+    matching_options = []
 
-    # Check for matches in reverse order (most specific first)
-    for option in reversed(options):
+    # Find all matching options
+    for option in options:
         if 'requirements' in option:
             option_reqs = set(option['requirements'])
             # Check if all required terms are in requirements (exact match)
             if option_reqs.issubset(requirements_set):
-                return option['title']
+                matching_options.append(option)
+
+    # If we have matches, pick the one with highest importance
+    if matching_options:
+        if importance_map:
+            # Find the match with the highest importance requirement
+            best_option = max(matching_options,
+                            key=lambda opt: max(importance_map.get(req, 0) for req in opt['requirements']))
+            return best_option['title']
+        else:
+            # Without importance map, return the last match (most specific)
+            return matching_options[-1]['title']
 
     # Return default
     for option in options:
@@ -148,7 +160,7 @@ def load_contextual_resume(requirements_file, mappings_file, roles_file=None, pe
 
     # Select main position title based on requirements
     if roles_data.get('main_position'):
-        data['position'] = select_option(roles_data['main_position']['options'], requirements)
+        data['position'] = select_option(roles_data['main_position']['options'], requirements, importance_map)
 
     # Process each requirement for summaries and skills
     for req in requirements:
@@ -197,7 +209,7 @@ def load_contextual_resume(requirements_file, mappings_file, roles_file=None, pe
             job = {
                 'company': job_config['company'],
                 'dates': job_config['dates'],
-                'role': select_option(job_config['role_options'], requirements),
+                'role': select_option(job_config['role_options'], requirements, importance_map),
                 'bullets': job_config['bullets']
             }
             data['jobs'].append(job)
