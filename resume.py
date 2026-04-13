@@ -112,15 +112,16 @@ def load_contextual_resume(requirements_file, mappings_file, roles_file=None, pe
     requirements_data = yaml.safe_load(requirements_path.read_text())
 
     if isinstance(requirements_data, dict) and 'requirements' in requirements_data:
-        # YAML format with importance values
+        # YAML format
         requirements_list = requirements_data['requirements']
         requirements = [req['name'] for req in requirements_list]
-        importance_map = {req['name']: req.get('importance', 5) for req in requirements_list}
+        # Importance based on order: first item = 10, last = 1
+        importance_map = {req['name']: max(1, 11 - i) for i, req in enumerate(requirements_list)}
     else:
         # Plain text format (backwards compatibility)
         requirements_text = requirements_path.read_text()
         requirements = [line.strip() for line in requirements_text.split('\n') if line.strip()]
-        importance_map = {req: 5 for req in requirements}  # default importance
+        importance_map = {req: max(1, 11 - i) for i, req in enumerate(requirements)}
 
     # Load mappings
     mappings_path = Path(mappings_file)

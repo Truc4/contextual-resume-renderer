@@ -21,12 +21,12 @@ You write the content. This tool just shows only the parts that matter for each 
 ## How It Works
 
 1. **Extract job requirements** - read a job posting and list required skills/qualifications
-2. **Create a requirements file** - list these with importance values (1-10)
+2. **Create a requirements file** - rank these by importance (order determines priority)
 3. **Filter your content** - the tool selects the top skills and experience from your pre-written data
 4. **Generate PDF** - formats the filtered content into a tailored, professional resume and cover letter
 
 The tool combines:
-- **requirements.yaml** - what the job needs (with importance weights)
+- **requirements.yaml** - what the job needs (ranked by order)
 - **mappings.yaml** - how to present your skills and experience
 - **personal.yaml** - your job history, education, and job title options (gitignored)
 - **template/contextual.html.j2** - HTML/CSS layout for the resume
@@ -89,7 +89,7 @@ contextual-resume-renderer/
 └── data/
     ├── personal.yaml          # Your job history, education, and job title options
     ├── personal.yaml.example  # Example to copy and customize
-    ├── requirements.yaml      # Job requirements & importance
+    ├── requirements.yaml      # Job requirements ranked by order
     ├── requirements.yaml.example  # Example to copy
     ├── mappings.yaml          # Skill/experience descriptions
     ├── mappings.yaml.example  # Example to copy
@@ -108,16 +108,14 @@ Contains your personal information and job title options:
 - See `personal.yaml.example` for the structure to copy and customize
 
 ### requirements.yaml
-Extract requirements from a job posting and list them with importance (1-10):
+Extract requirements from a job posting and rank them by importance (order determines priority):
 ```yaml
 requirements:
   - name: "Python"
-    importance: 10
-  - name: "Docker"
-    importance: 8
   - name: "API Development"
-    importance: 9
+  - name: "Docker"
 ```
+Position 1 = importance 10, Position 2 = importance 9, ... Position 10 = importance 1.
 See `requirements.yaml.example` for a template.
 
 ### mappings.yaml
@@ -131,7 +129,7 @@ Python:
 Each requirement can have:
 - `skill: true` - include in SKILLS section
 - `summary: "text"` - include in SUMMARY section
-- `either_or: "group"` - mark as mutually exclusive (only highest importance shown)
+- `either_or: "group"` - mark as mutually exclusive (only highest-ranked shown)
 
 See `mappings.yaml.example` for a template.
 

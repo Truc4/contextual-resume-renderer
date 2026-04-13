@@ -1,22 +1,14 @@
 # Job Requirements Template
-# Extract these from a job posting with importance weights
-# importance: 1-10 (10 = most important)
+# Extract these from a job posting, ranked by importance
+# Importance is determined by order: position 1 = 10, position 2 = 9, ... position 10 = 1
 # The system will use only the top 5 most important summaries in the resume
 
 requirements:
   - name: "Python"
-    importance: 10
   - name: "SQL"
-    importance: 10
-  - name: "API Development"
-    importance: 9
-  - name: "Docker"
-    importance: 8
-  - name: "AWS"
-    importance: 8
-  - name: "Testing"
-    importance: 7
   - name: "Problem Solving"
-    importance: 9
+  - name: "API Development"
   - name: "Communication"
-    importance: 8
+  - name: "Docker"
+  - name: "AWS"
+  - name: "Testing"

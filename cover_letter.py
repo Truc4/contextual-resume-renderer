@@ -22,10 +22,11 @@ def load_contextual_cover_letter(requirements_file, cover_letter_file, personal_
 
     if isinstance(requirements_data, dict) and 'requirements' in requirements_data:
         requirements_list = requirements_data['requirements']
-        requirements = [(req['name'], req.get('importance', 5)) for req in requirements_list]
+        # Importance based on order: first item = 10, last = 1
+        requirements = [(req['name'], max(1, 11 - i)) for i, req in enumerate(requirements_list)]
     else:
         requirements_text = requirements_path.read_text()
-        requirements = [(line.strip(), 5) for line in requirements_text.split('\n') if line.strip()]
+        requirements = [(line.strip(), max(1, 11 - i)) for i, line in enumerate(requirements_text.split('\n')) if line.strip()]
 
     # Load cover letter mappings
     cover_letter_path = Path(cover_letter_file)

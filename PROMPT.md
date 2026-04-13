@@ -6,36 +6,39 @@ You are helping to tailor a resume for a specific job application.
 
 1. **Read the job description** provided below
 2. **Extract all requirements and skills** mentioned in the job description
-3. **Fill out `requirements.yaml`** with the extracted requirements
-4. **Assign importance values** (1-10) based on how critical each requirement is to the job
+3. **Fill out `requirements.yaml`** with the top 10 most critical requirements, ranked by importance
+4. **Rank by order only** — the first item has importance 10, second has 9, down to 10th item with importance 1
 5. **Report which requirements are new** so the user can add mappings for them in `mappings.yaml`
 
 ## File: `requirements.yaml`
 
-This file contains job requirements with importance ratings. Each requirement has:
-- **name**: The requirement/skill name
-- **importance**: A numeric value from 1-10 indicating how important this is for the job (10 = critical, 1 = nice to have)
+This file contains job requirements ranked by importance. Only the **top 10 requirements** matter:
+- **Order determines importance**: Position 1 = importance 10, Position 2 = importance 9, ... Position 10 = importance 1
+- **Anything after position 10 is ignored**
+- Only `name` field is needed — no `importance` value
 
 **Format:**
 ```yaml
 requirements:
-  - name: "Full Stack Developer"
-    importance: 9
-
   - name: "SQL"
-    importance: 10
 
-  - name: "Database"
-    importance: 9
+  - name: "Backend Development"
 
-  - name: "API Development"
-    importance: 8
+  - name: "Python"
+
+  - name: "Database Design"
 
   - name: "Communication"
-    importance: 10
+
+  - name: "System Design"
 
   - name: "Problem Solving"
-    importance: 10
+
+  - name: "API Development"
+
+  - name: "Team Collaboration"
+
+  - name: "Code Review"
 ```
 
 ## Workflow
@@ -44,12 +47,12 @@ requirements:
    - Look for explicit requirements ("must have", "required")
    - Look for preferred skills ("nice to have", "preferred")
    - Extract technologies, frameworks, soft skills, education level, role titles
-2. **Assess importance** for each requirement
-   - Critical/must-have requirements → 9-10
-   - Important requirements → 7-8
-   - Nice-to-have → 5-6
-   - Bonus skills → 1-4
-3. **Populate `requirements.yaml`** in the proper YAML format with name and importance
+2. **Rank the top 10** most critical requirements
+   - Order by importance (most critical first)
+   - Discard anything ranked 11th or lower
+3. **Populate `requirements.yaml`** in the proper YAML format
+   - List top 10 in order (no importance field)
+   - Position 1 will be treated as importance 10, position 2 as 9, etc.
 4. **At the end**, clearly state:
    - Which requirements are NEW (not in current `requirements.yaml`)
    - Suggest mappings for new requirements (what resume section they should appear in)
@@ -61,30 +64,31 @@ requirements:
 
 **Your output:**
 
-### requirements.yaml:
+### requirements.yaml (top 10 only, ranked by importance):
 ```yaml
 requirements:
-  - name: "Senior Software Engineer"
-    importance: 9
-
   - name: "Backend Engineer"
-    importance: 10
 
   - name: "Python"
-    importance: 10
-
-  - name: "Go"
-    importance: 9
-
-  - name: "Team Leadership"
-    importance: 8
-
-  - name: "Database Design"
-    importance: 9
 
   - name: "Communication"
-    importance: 10
+
+  - name: "Database Design"
+
+  - name: "Team Leadership"
+
+  - name: "Go"
+
+  - name: "Senior Software Engineer"
+
+  - name: "System Design"
+
+  - name: "Problem Solving"
+
+  - name: "5+ Years Experience"
 ```
+
+**Note:** Items are ordered by importance. Position 1 (Backend Engineer) = importance 10, Position 2 (Python) = importance 9, etc. Anything beyond position 10 is ignored.
 
 ---
 
