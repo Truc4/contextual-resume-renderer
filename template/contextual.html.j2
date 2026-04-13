@@ -10,8 +10,8 @@
 
 <header>
   <div class="header-title">
-    {{ name or "Your Name" }}
-    {% if position %} - {{ position }}{% endif %}
+    <span class="candidate-name">{{ name or "Your Name" }}</span>
+    {% if position %}<span class="job-title"> - {{ position }}</span>{% endif %}
   </div>
   {% if location %}<div class="header-location">{{ location }}</div>{% endif %}
   <div class="header-contact">

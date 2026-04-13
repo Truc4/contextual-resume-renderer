@@ -101,7 +101,7 @@ def filter_either_or_requirements(requirements, mappings, importance_map):
     return filtered_requirements
 
 
-def load_contextual_resume(requirements_file, mappings_file, roles_file=None, personal_file=None):
+def load_contextual_resume(requirements_file, mappings_file, roles_file=None, personal_file=None, location_override=None, summary_override=None):
     """Load requirements and mappings, collect sections and skills."""
     # Load requirements
     requirements_path = Path(requirements_file)
@@ -193,9 +193,12 @@ def load_contextual_resume(requirements_file, mappings_file, roles_file=None, pe
                     'importance': importance
                 })
 
-    # Sort summaries by importance (descending) and take top 5
+    # Sort summaries by importance (descending) and take top 4
     summaries_with_importance.sort(key=lambda x: x['importance'], reverse=True)
-    data['summaries'] = [s['text'] for s in summaries_with_importance[:5]]
+    if summary_override:
+        data['summaries'] = [summary_override]
+    else:
+        data['summaries'] = [s['text'] for s in summaries_with_importance[:4]]
 
     # Sort skills by importance and include high-importance ones
     # Include all skills with importance >= 7, or top 5-6 whichever is more
@@ -219,8 +222,16 @@ def load_contextual_resume(requirements_file, mappings_file, roles_file=None, pe
     # Add personal contact info to data
     if personal_data.get('name'):
         data['name'] = personal_data['name']
-    if personal_data.get('location'):
-        data['location'] = personal_data['location']
+
+    # Handle location with override
+    default_location = personal_data.get('location')
+    final_location = location_override or default_location
+    if final_location:
+        # If location differs from default, format as relocation notice
+        if location_override and location_override != default_location:
+            data['location'] = f"Relocating to {final_location} - May 2026"
+        else:
+            data['location'] = final_location
     if personal_data.get('email'):
         data['email'] = personal_data['email']
     if personal_data.get('phone'):
@@ -246,7 +257,9 @@ def load_contextual_resume(requirements_file, mappings_file, roles_file=None, pe
 @click.option('--output', default=None, help='Output file path')
 @click.option('--html-only', is_flag=True, help='Output HTML only (no PDF rendering)')
 @click.option('--open', 'open_after', is_flag=True, help='Open PDF after rendering')
-def render(requirements_file, mappings, roles, personal, template, output, html_only, open_after):
+@click.option('--location', default=None, help='Override location (shows as "Relocating to X, Y May 2026" if different from default)')
+@click.option('--summary', default=None, help='Override summary section')
+def render(requirements_file, mappings, roles, personal, template, output, html_only, open_after, location, summary):
     """Render a resume from requirements and mappings files."""
 
     # Auto-detect requirements file if not provided
@@ -274,7 +287,7 @@ def render(requirements_file, mappings, roles, personal, template, output, html_
         personal = str(req_path.parent / 'personal.yaml')
 
     # Load data from requirements + mappings + roles + personal
-    data = load_contextual_resume(requirements_file, mappings, roles, personal)
+    data = load_contextual_resume(requirements_file, mappings, roles, personal, location, summary)
 
     # Set up Jinja2 environment
     template_dir = str(Path(template).parent.resolve())

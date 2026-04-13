@@ -1,5 +1,6 @@
 #!/bin/bash
 # Simple render command — generates resume PDF from requirements.yaml + mappings.yaml
+# Usage: ./resume [requirements_file] [--location "City, State"] [other_options]
 
 source venv/bin/activate
 

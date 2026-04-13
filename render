@@ -13,17 +13,46 @@ else
   exit 1
 fi
 
-# Check if --open flag is present
-OPEN_FLAG=""
-for arg in "$@"; do
-  if [[ "$arg" == "--open" ]]; then
-    OPEN_FLAG="--open"
-    break
-  fi
+# Build filtered args for resume.py and cover_letter.py
+declare -a RESUME_ARGS
+declare -a COVER_ARGS
+declare -a input_args=("$@")
+
+for ((i=0; i<${#input_args[@]}; i++)); do
+  arg="${input_args[i]}"
+  case "$arg" in
+    --no-prompt)
+      # Only for cover letter
+      COVER_ARGS+=("$arg")
+      ;;
+    --hiring-manager)
+      # Only for cover letter with its value
+      COVER_ARGS+=("$arg")
+      ((i++))
+      COVER_ARGS+=("${input_args[i]}")
+      ;;
+    --position|--company|--format|--cover-letter)
+      # Only for cover letter with their values
+      COVER_ARGS+=("$arg")
+      ((i++))
+      COVER_ARGS+=("${input_args[i]}")
+      ;;
+    --summary|--location)
+      # Only for resume with their values
+      RESUME_ARGS+=("$arg")
+      ((i++))
+      RESUME_ARGS+=("${input_args[i]}")
+      ;;
+    *)
+      # Common args for both
+      RESUME_ARGS+=("$arg")
+      COVER_ARGS+=("$arg")
+      ;;
+  esac
 done
 
 echo "Generating resume..."
-python resume.py "$REQUIREMENTS_FILE" $OPEN_FLAG
+python resume.py "$REQUIREMENTS_FILE" "${RESUME_ARGS[@]}"
 RESUME_STATUS=$?
 if [[ $RESUME_STATUS -ne 0 ]]; then
   echo "Resume generation failed with status $RESUME_STATUS"
@@ -32,7 +61,7 @@ fi
 
 echo ""
 echo "Generating cover letter..."
-python cover_letter.py "$REQUIREMENTS_FILE" "$@"
+python cover_letter.py "$REQUIREMENTS_FILE" "${COVER_ARGS[@]}"
 COVER_STATUS=$?
 if [[ $COVER_STATUS -ne 0 ]]; then
   echo "Cover letter generation failed with status $COVER_STATUS"

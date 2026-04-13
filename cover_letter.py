@@ -159,11 +159,12 @@ def build_cover_letter_html(text):
 @click.option('--hiring-manager', default=None, help='Name of hiring manager')
 @click.option('--position', '--job-title', default=None, help='Job position/title')
 @click.option('--company', default=None, help='Company name')
+@click.option('--location', default=None, help='Location (accepted for compatibility, not used in cover letter)')
 @click.option('--output', default=None, help='Output file path (auto-detected if not provided)')
 @click.option('--format', type=click.Choice(['txt', 'pdf', 'both']), default='both', help='Output format')
 @click.option('--no-prompt', is_flag=True, help='Skip interactive prompts and use defaults/options')
 @click.option('--open', 'open_after', is_flag=True, help='Open PDF in browser after rendering')
-def generate(requirements_file, cover_letter, personal, hiring_manager, position, company, output, format, no_prompt, open_after):
+def generate(requirements_file, cover_letter, personal, hiring_manager, position, company, location, output, format, no_prompt, open_after):
     """Generate a cover letter from requirements and mappings."""
 
     # Auto-detect requirements file if not provided
