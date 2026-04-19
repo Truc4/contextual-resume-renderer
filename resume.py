@@ -18,14 +18,18 @@ def slugify(text):
 
 
 def default_output_path(data):
-    """Generate output filename from company and job title."""
-    company = data.get('meta', {}).get('company', 'resume')
-    job_title = data.get('meta', {}).get('job_title', 'resume')
+    """Generate output filename from personal name."""
+    name = data.get('name', 'resume')
+    # Split name into first and last
+    name_parts = name.split()
+    if len(name_parts) >= 2:
+        first_name = slugify(name_parts[0])
+        last_name = slugify(name_parts[-1])
+        filename = f"{first_name}-{last_name}-resume"
+    else:
+        filename = slugify(name) or 'resume'
 
-    company_slug = slugify(company)
-    title_slug = slugify(job_title)
-
-    return f"output/{company_slug}_{title_slug}.pdf"
+    return f"output/{filename}.pdf"
 
 
 
@@ -201,13 +205,9 @@ def load_contextual_resume(requirements_file, mappings_file, roles_file=None, pe
     else:
         data['summaries'] = [s['text'] for s in summaries_with_importance[:4]]
 
-    # Sort skills by importance and include high-importance ones
-    # Include all skills with importance >= 7, or top 5-6 whichever is more
+    # Sort skills by importance and include top 10
     skills_with_importance.sort(key=lambda x: x['importance'], reverse=True)
-    high_importance_skills = [s['name'] for s in skills_with_importance if s['importance'] >= 7]
-    top_skills = [s['name'] for s in skills_with_importance[:6]]
-    # Use high importance skills if there are any, otherwise use top 6
-    data['skills'] = high_importance_skills if high_importance_skills else top_skills
+    data['skills'] = [s['name'] for s in skills_with_importance[:10]]
 
     # Build jobs list with selected role titles from personal data
     if personal_data.get('jobs'):
@@ -311,7 +311,7 @@ def render(requirements_file, mappings, roles, personal, template, output, html_
 
     # Determine output path
     if not output:
-        output = 'output/resume.pdf'
+        output = default_output_path(data)
 
     out_path = Path(output)
     out_path.parent.mkdir(parents=True, exist_ok=True)

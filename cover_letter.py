@@ -199,12 +199,14 @@ def generate(requirements_file, cover_letter, personal, hiring_manager, position
 
     # Determine output path
     if not output:
-        if company and position:
-            company_slug = company.lower().replace(' ', '_')
-            position_slug = position.lower().replace(' ', '_')
-            base_output = f"output/{company_slug}_{position_slug}_cover_letter"
+        name = data['name']
+        name_parts = name.split()
+        if len(name_parts) >= 2:
+            first_name = name_parts[0].lower()
+            last_name = name_parts[-1].lower()
+            base_output = f"output/{first_name}-{last_name}-cover-letter"
         else:
-            base_output = 'output/cover_letter'
+            base_output = f"output/{name.lower()}-cover-letter"
 
     # Build cover letter text (use provided values, empty strings for defaults)
     letter = build_cover_letter_text(data, hiring_manager or '', position or '', company or '')
