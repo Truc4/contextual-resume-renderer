@@ -203,7 +203,12 @@ def load_contextual_resume(requirements_file, mappings_file, roles_file=None, pe
     if summary_override:
         data['summaries'] = [summary_override]
     else:
-        data['summaries'] = [s['text'] for s in summaries_with_importance[:4]]
+        # If a lead_summary is set, reserve a slot and reduce contextual summaries
+        lead = personal_data.get('lead_summary')
+        contextual_cap = 2 if lead else 4
+        data['summaries'] = [s['text'] for s in summaries_with_importance[:contextual_cap]]
+        if lead:
+            data['summaries'] = [lead] + data['summaries']
 
     # Sort skills by importance and include top 10
     skills_with_importance.sort(key=lambda x: x['importance'], reverse=True)
@@ -230,7 +235,7 @@ def load_contextual_resume(requirements_file, mappings_file, roles_file=None, pe
     if final_location:
         # If location differs from default, format as relocation notice
         if location_override and location_override != default_location:
-            data['location'] = f"Relocating to {final_location} - May 2026"
+            data['location'] = f"Relocating to {final_location} - June 2026"
         else:
             data['location'] = final_location
     if personal_data.get('email'):

@@ -50,11 +50,13 @@
       <div class="job-dates">{{ job.dates }}</div>
     </div>
     <div class="job-role">{{ job.role }}</div>
+    {% if job.bullets %}
     <ul class="job-bullets">
       {% for bullet in job.bullets %}
       <li>{{ bullet }}</li>
       {% endfor %}
     </ul>
+    {% endif %}
   </div>
   {% endfor %}
 
