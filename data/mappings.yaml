@@ -1,0 +1,488 @@
+# Mappings Configuration
+#
+# This file maps each requirement (from all_requirements.txt) to resume content.
+# When a requirement appears in requirements.txt, the system looks it up here and:
+# 1. Collects any 'summary' text to include in the SUMMARY section
+# 2. Marks items with 'skill: true' to include in the SKILLS section
+# 3. Uses 'position' to select job title variants (via roles.yaml)
+# 4. Uses 'education' for education-related content
+# 5. Uses other custom fields as needed
+#
+# Layout:
+# requirement_name:
+#   summary: "Text to appear in SUMMARY section (if this requirement is matched)"
+#   skill: true                    # Mark as a skill to include in SKILLS section
+#   position: true                 # Mark as a position/role title
+#   education: "Education text"    # Education-related content
+#   either_or: "group_name"        # Group mutually-exclusive requirements
+#   other_field: "value"           # Any other fields for custom use
+#
+# Rules:
+# - If a requirement has 'skill: true', it appears in SKILLS (case-sensitive)
+# - If a requirement has 'summary:', that text appears in SUMMARY section
+# - If a requirement has 'position: true', it's treated as a role/position title
+# - If a requirement has 'education:', it appears in EDUCATION section
+# - If a requirement has 'either_or: "group"', it's part of a mutually-exclusive group
+#   When multiple items in the same either_or group are in requirements.yaml,
+#   only the one with highest importance is included (others are filtered out)
+# - A requirement can have multiple fields (e.g., both summary and skill)
+# - Field names are case-sensitive
+#
+# Example:
+#   JavaScript:
+#     skill: true
+#     summary: "5 years experience using JavaScript"
+#
+# This means:
+# - "JavaScript" appears in SKILLS section
+# - "5 years experience using JavaScript" appears in SUMMARY section
+
+# Role requirements - map to resume sections
+software engineer:
+  summary: "Software Engineer with real world experience building production systems, with a focus on low-level design."
+  either_or: title
+
+software developer:
+  summary: "Software Developer with real world experience building production systems, with a focus on low-level design."
+  either_or: title
+
+systems developer:
+  summary: "Systems Developer focused on performance, memory efficiency, and low-level software design, with experience building native libraries, language bindings, and data-oriented systems."
+  either_or: title
+
+systems engineer:
+  summary: "Systems Engineer specializing in low-level programming, concurrency, and performance-critical systems, with experience in native code, memory management, and systems-level tooling."
+  either_or: title
+
+application developer:
+  summary: "Application Developer with real world full-stack web development experience."
+  either_or: title
+
+web application developer:
+  summary: "Web Application Developer with real world full-stack web development experience."
+  either_or: title
+
+full stack engineer:
+  summary: "Full Stack Engineer with real world web application development experience."
+  either_or: title
+
+full stack developer:
+  summary: "Full Stack Developer with real world web application development experience."
+  either_or: title
+
+backend engineer:
+  summary: "Backend Engineer with real world server-side architecture and database design experience."
+  either_or: title
+
+backend developer:
+  summary: "Backend Developer with real world server-side architecture and database design experience."
+  either_or: title
+
+frontend engineer:
+  summary: "Frontend Engineer with real world experience building responsive user interfaces."
+  either_or: title
+
+frontend developer:
+  summary: "Frontend Developer with real world experience building responsive user interfaces."
+  either_or: title
+
+devops engineer:
+  summary: "DevOps Engineer with academic experience in infrastructure automation, containerization, and deployment pipelines."
+  either_or: title
+
+# Skills - mark with skill: true
+asp.net:
+  skill: true
+  summary: "4+ years developing web applications with ASP.NET."
+  either_or: "dotnet_family"
+
+.net:
+  skill: true
+  summary: "4+ years developing web applications with .NET."
+  either_or: "dotnet_family"
+
+c#:
+  skill: true
+
+sql:
+  skill: true
+  summary: "5+ years with relational databases, migrations, and stored procedures."
+
+javascript:
+  skill: true
+  summary: "6+ years building applications with JavaScript across the full stack."
+  either_or: "js_family"
+
+typescript:
+  skill: true
+  summary: "3+ years building applications with TypeScript across the full stack."
+  either_or: "js_family"
+
+python:
+  skill: true
+
+java:
+  skill: true
+
+rust:
+  skill: true
+
+c:
+  skill: true
+
+c++:
+  skill: true
+
+go:
+  skill: true
+
+odin:
+  skill: true
+
+angular:
+  skill: true
+
+react:
+  skill: true
+
+vue:
+  skill: true
+
+nodejs:
+  skill: true
+
+docker:
+  skill: true
+  summary: "Experience using Docker to containerize applications and ensure consistent environments across systems."
+
+aws:
+  skill: true
+
+azure:
+  skill: true
+
+git:
+  skill: true
+
+# Soft skills - mark with skill: true if they should appear in SKILLS section
+team leadership:
+  skill: true
+  summary: "Led development teams in academic projects."
+
+project management:
+  skill: true
+  summary: "Led 1 of 4 semester-long academic group projects (4-6 person teams)."
+
+communication:
+  skill: true
+  summary: "Strong technical communication: 8+ open source contributions with issues reported and PRs merged."
+
+problem solving:
+  skill: true
+  summary: "Analytical problem solving: debugged and resolved 25+ issues across academic and open source projects."
+
+agile:
+  skill: true
+  summary: "Agile and Scrum: 2+ academic projects and summer internship in agile environment."
+
+# Databases / Backend
+postgresql:
+  skill: true
+
+database:
+  skill: true
+
+api development:
+  skill: true
+  summary: "Designs and builds RESTful APIs: 20+ across professional and personal projects."
+
+# Testing / Engineering Practices
+testing:
+  skill: true
+
+test-driven development:
+  skill: true
+  summary: "Test-driven development: 3+ academic projects with 74% average test coverage."
+
+# Architecture
+domain-driven design:
+  skill: true
+  summary: "Domain-driven design for application structure."
+
+layered architecture:
+  skill: true
+  summary: "Layered architecture: frontend, backend, and data separation."
+
+# Observability / Product
+analytics:
+  skill: true
+  summary: "Implements analytics to understand user behavior and inform product decisions."
+
+monitoring:
+  skill: true
+  summary: "Monitors application performance and logs to quickly identify and resolve issues."
+
+# Integrations
+messaging apis:
+  skill: true
+  summary: "Integrates messaging services such as SMS and email into applications."
+
+# AI / Modern Tooling
+llm tooling:
+  skill: true
+  summary: "Leverages AI/LLM tools to accelerate development and build intelligent features."
+
+# Frameworks / Platforms
+next.js:
+  skill: true
+
+django:
+  skill: true
+  summary: "Experience building web applications with Django in academic projects, including backend services and API development."
+
+ci/cd:
+  skill: true
+  summary: "Experience setting up CI/CD pipelines using GitHub Actions and GitLab CI/CD, including automated testing and deployments."
+
+code review:
+  skill: true
+  summary: "Familiar with code review workflows through team projects and professional environments using feature branches and pull requests."
+
+technical documentation:
+  skill: true
+  summary: "Experience writing technical documentation through coursework and personal projects, including READMEs and implementation details."
+
+sdlc:
+  skill: true
+  summary: "Familiar with software development lifecycle concepts including Agile, Scrum, and Waterfall from both coursework and professional experience."
+
+linux:
+  skill: true
+  summary: "Daily Linux user with experience running Ubuntu Server to host game servers and personal services."
+
+xml:
+  skill: true
+
+json:
+  skill: true
+  summary: "Extensive experience working with JSON in web applications and game-related projects, including data exchange and APIs."
+
+web scraping:
+  skill: true
+  summary: "Built web scrapers for tasks such as website data migration, focusing on extracting structured data from inconsistent sources."
+
+automation:
+  skill: true
+  summary: "Regularly writes scripts to automate workflows and transform data, including spreadsheet processing and repetitive tasks."
+
+debugging:
+  skill: true
+  summary: "Strong debugging skills with a focus on identifying root causes through logs, code analysis, and systematic investigation."
+
+object-oriented programming:
+  skill: true
+  summary: "Strong experience with object-oriented programming in languages like C#, with understanding of design tradeoffs and alternatives like composition."
+
+team collaboration:
+  skill: true
+  summary: "Experience collaborating using Git-based workflows, including feature branches and pull requests in team environments."
+
+excel:
+  skill: true
+  summary: "Comfortable working with spreadsheets and data transformation using tools like Google Sheets, including automating and manipulating structured data."
+
+data integration:
+  skill: true
+  summary: "Experience moving and transforming data between systems through APIs, scripts, and automation workflows, focusing on making data usable and consistent."
+
+computer science:
+  education: "Background in Computer Science with coursework focused on software development and data systems."
+
+data transformation:
+  skill: true
+  summary: "Experience transforming and restructuring data using spreadsheets, scripts, and automation to make it usable for analysis and workflows."
+
+attention to detail:
+  skill: true
+
+product development:
+  summary: "Experience developing user-facing features from concept to implementation."
+
+feature development:
+  skill: true
+
+learning agility:
+  summary: "Quickly learns and applies new technologies and concepts in dynamic environments."
+  skill: true
+
+adaptability:
+  summary: "Adapts quickly to changing requirements and new technical challenges."
+  skill: true
+
+systems design:
+  summary: "Understands system design principles including scalability, maintainability, and performance."
+  skill: true
+
+user-focused development:
+  summary: "Builds features with a focus on user experience."
+
+software design:
+  summary: "Experience designing maintainable software systems with attention to structure, scalability, and clarity."
+  skill: true
+
+software development:
+  summary: "Professional experience building, maintaining, and improving production software systems."
+
+critical thinking:
+  summary: "Approaches complex technical problems analytically and evaluates tradeoffs before implementing solutions."
+  skill: true
+
+adaptability:
+  summary: "Adapts quickly to changing priorities, evolving requirements, and fast-moving environments."
+  skill: true
+
+multitasking:
+  summary: "Able to manage multiple workstreams effectively while maintaining quality and momentum."
+
+dynamic environment:
+  summary: "Comfortable working in demanding, fast-paced environments with shifting priorities."
+
+stem:
+  education: "Background in a STEM discipline with strong technical and analytical foundations."
+
+technical debt management:
+  summary: "Experience identifying, prioritizing, and reducing technical debt to improve system maintainability."
+  skill: true
+
+tradeoff analysis:
+  summary: "Evaluates tradeoffs between speed, scalability, and maintainability when designing and implementing systems."
+  skill: true
+
+feature development:
+  skill: true
+
+systems design:
+  summary: "Designs systems with attention to scalability, maintainability, and real-world constraints."
+  skill: true
+
+scala:
+  skill: true
+  summary: "Familiar with functional programming concepts."
+
+nosql:
+  skill: true
+  summary: "Experience working with NoSQL databases including MongoDB and DynamoDB in project environments."
+
+devops:
+  skill: true
+  summary: "Applies DevOps practices including CI/CD, automation, and infrastructure management to improve reliability and deployment workflows."
+
+maintenance:
+  skill: true
+  summary: "Experience maintaining and improving existing codebases, including debugging issues and implementing incremental changes."
+
+travel flexibility:
+  summary: "Willing to travel as required for project support."
+
+visual studio:
+  skill: true
+
+cmake:
+  skill: true
+
+make:
+  skill: true
+
+performance optimization:
+  skill: true
+  summary: "Improved application performance by identifying bottlenecks, reducing load times and increasing responsiveness by up to 30% in key workflows."
+
+generative ai:
+  skill: true
+  summary: "Integrated AI-assisted workflows that reduced manual effort and accelerated development tasks by 50–60%."
+
+monitoring:
+  skill: true
+  summary: "Leveraged logging and monitoring to diagnose issues, reducing debugging time and improving system stability."
+
+deployment:
+  skill: true
+  summary: "Deployed applications across development environments, ensuring consistent builds and reducing environment-related issues."
+
+prompt engineering:
+  skill: true
+  summary: "Designed and refined prompts for AI systems, improving response quality and consistency across multiple use cases."
+
+cloud platforms:
+  summary: "Worked with cloud-hosted environments and deployment platforms, gaining familiarity with scalable application infrastructure."
+
+bash:
+  skill: tru9
+  summary: "Experience writing shell scripts to automate workflows, including fish, bash, powershell and more."
+
+systems programming:
+  skill: true
+  summary: "Experience building low-level systems including native libraries, language bindings, and performance-critical components with explicit memory management."
+
+computer architecture:
+  skill: true
+  summary: "Understanding of CPU architecture, memory hierarchy, and how low-level implementation choices impact performance."
+
+profiling:
+  skill: true
+  summary: "Uses profiling and instrumentation to identify bottlenecks and optimize CPU and memory usage in performance-critical systems."
+
+performance optimization:
+  skill: true
+  summary: "Optimizes systems for latency, throughput, and memory usage through careful analysis of bottlenecks and data flow."
+
+tooling development:
+  skill: true
+  summary: "Builds internal tools and developer-facing systems to improve visibility, debugging, and performance analysis."
+
+compilers:
+  summary: "Explored compiler design through academic work and personal projects, including building toy languages and experimenting with parsing, intermediate representations, and code generation."
+
+distributed systems:
+  skill: true
+  summary: "Understanding of distributed system design, including syncing and reliability."
+
+event-driven architecture:
+  skill: true
+  summary: "Experienced with event-driven design patterns and asynchronous system communication."
+
+integration:
+  skill: true
+  summary: "Experience integrating systems through APIs and data workflows."
+
+independence:
+  summary: "Self-starter who can work independently."
+
+user experience:
+  skill: true
+  summary: "Focus on building intuitive and user-friendly applications."
+
+innovation:
+  skill: true
+  summary: "Loves to explore innovative ideas and technologies."
+ 
+elixir:
+  skill: true
+  summary: "Experience with functional programming paradims."
+
+learning ability:
+  skill: true
+  summary: "Strong ability to quickly learn new technologies."
+
+clean code:
+  skill: true
+  summary: "Focus on writing clean, maintainable code."
+
+php:
+  skill: true
+
+programming:
+  skill: true
+
+rust:
+  skill: true

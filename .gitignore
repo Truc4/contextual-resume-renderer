@@ -8,9 +8,9 @@ __pycache__/
 venv/
 *.pdf
 .DS_Store
-data/personal.yaml
-data/requirements.yaml
-data/roles.yaml
-data/mappings.yaml
-data/all_requirements.txt
-data/cover_letter.yaml
+# data/personal.yaml
+# data/requirements.yaml
+# data/roles.yaml
+# data/mappings.yaml
+# data/all_requirements.txt
+# data/cover_letter.yaml

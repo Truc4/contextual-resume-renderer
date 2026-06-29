@@ -1,0 +1,167 @@
+# Personal Resume Data
+# This file contains your personal information and job history
+# It is NOT committed to git (see .gitignore)
+
+# Contact information
+name: "Curt Reyes"
+location: "Logan, Utah"
+email: "curt.reyes.dev@gmail.com"
+phone: "(435) 374-2556"
+github: "https://github.com/truc4"
+linkedin: "https://linkedin.com/in/curt-reyes"
+# portfolio: "http://portfolio.curtreyes.com"
+portfolio: "http://curtreyes.com/portfolio"
+
+# Always-shown opening summary line (prepended before contextual summaries)
+lead_summary: "Recent Computer Science graduate seeking first full-time software role, with 5+ years of professional experience from student and internship positions."
+# Part time
+# lead_summary: "Recent Computer Science graduate seeking first full-time software role, with 5+ years of professional experience from student and internship positions."
+
+# Main position title options
+main_position:
+  default: "Software Developer"
+  options:
+    - title: "Software Developer"
+      requirements: ["Software Developer"]
+    # - title: ""
+      default: true
+    - title: "Application Developer"
+      requirements: ["Application Developer"]
+    - title: "Web Application Developer"
+      requirements: ["Web Application Developer"]
+    - title: "Full Stack Developer"
+      requirements: ["Full Stack Developer"]
+    - title: "Full Stack Engineer"
+      requirements: ["Full Stack Engineer"]
+    - title: "Backend Developer"
+      requirements: ["Backend Developer"]
+    - title: "Backend Engineer"
+      requirements: ["Backend Engineer"]
+    - title: "Frontend Developer"
+      requirements: ["Frontend Developer"]
+    - title: "Frontend Engineer"
+      requirements: ["Frontend Engineer"]
+    - title: "Software Engineer"
+      requirements: ["Software Engineer"]
+
+education:
+  bachelor:
+    school: "Utah State University"
+    degree: "Bachelor's in Computer Science"
+    graduation_date: "April 2026"
+
+jobs:
+  aspire:
+    company: "ASPIRE Engineering Research Center"
+    dates: "March 2026 - Present"
+    default_role: "Software Developer"
+    bullets:
+      - "Rebuilt the center's public website from the ground up, modernizing 10+ pages and improving page load performance by 40%."
+      - "Developed an internal reporting dashboard that reduced manual data entry effort by ~50% and cut routine report generation from hours to minutes."
+      - "Designed and deployed data APIs powering 6+ internal widgets and tools, improving data accuracy and eliminating duplicate entry across systems."
+    role_options:
+      - title: "Software Developer"
+        default: true
+      - title: "Software Engineer"
+        requirements: ["Software Engineer"]
+      - title: "Full Stack Developer"
+        requirements: ["Full Stack Developer"]
+      - title: "Full Stack Engineer"
+        requirements: ["Full Stack Engineer"]
+      - title: "Backend Developer"
+        requirements: ["Backend Developer"]
+      - title: "Backend Engineer"
+        requirements: ["Backend Engineer"]
+      - title: "Frontend Developer"
+        requirements: ["Frontend Developer"]
+      - title: "Frontend Engineer"
+        requirements: ["Frontend Engineer"]
+      - title: "Web Application Developer"
+        requirements: ["Web Application Developer"]
+      - title: "Application Developer"
+        requirements: ["Application Developer"]
+
+  ncham:
+    company: "National Center for Hearing Assessment and Management"
+    dates: "August 2022 - January 2026"
+    default_role: "Student .NET Developer"
+    bullets:
+    - "Primary developer for a data aggregation platform serving 40+ healthcare agencies across multiple states."
+    - "Implemented backend services in .NET to aggregate and process shared datasets of over 100 records per request, delivering 300+ production features and fixes."
+    - "Reduced average load time by 173% by optimizing data access patterns, query behavior, and request handling."
+    role_options:
+      - title: "Student .NET Developer"
+        default: true
+      - title: "Student .NET Backend Developer"
+        requirements: ["Backend Developer"]
+      - title: "Student .NET Backend Engineer"
+        requirements: ["Backend Engineer"]
+      - title: "Student .NET Full Stack Developer"
+        requirements: ["Full Stack Developer"]
+      - title: "Student .NET Full Stack Engineer"
+        requirements: ["Full Stack Engineer"]
+      - title: "Student .NET Software Developer"
+        requirements: ["Software Developer"]
+      - title: "Student .NET Software Engineer"
+        requirements: ["Software Engineer"]
+      - title: "Student Software Engineer"
+        requirements: ["Systems Engineer"]
+      - title: "Student Software Developer"
+        requirements: ["Systems Developer"]
+
+  jerran:
+    company: "Jerran Software"
+    dates: "April 2022 - July 2022"
+    default_role: "Full Stack Angular / Node.js Intern"
+    bullets:
+      - "Developed front-end features with Angular and managed backend APIs using Node.js for web projects."
+      - "Enhanced project architecture for long-term maintenance, focusing on robustness and efficiency."
+      - "Strengthened team collaboration and communication skills, ensuring seamless integration of project components."
+    role_options:
+      - title: "Full Stack Angular / Node.js Intern"
+        default: true
+      - title: "Full Stack Angular / Node.js Intern"
+        requirements: ["Full Stack Developer"]
+      - title: "Full Stack Angular / Node.js Engineering Intern"
+        requirements: ["Full Stack Engineer"]
+      - title: "Angular Frontend Intern"
+        requirements: ["Frontend Developer"]
+      - title: "Angular Frontend Engineering Intern"
+        requirements: ["Frontend Engineer"]
+      - title: "Node.js Backend Intern"
+        requirements: ["Backend Developer"]
+      - title: "Node.js Backend Engineering Intern"
+        requirements: ["Backend Engineer"]
+      - title: "Software Development Intern"
+        requirements: ["Software Developer"]
+      - title: "Software Engineering Intern"
+        requirements: ["Software Engineer"]
+
+  hfb:
+    company: "HFB Technologies"
+    dates: "June 2021 - January 2022"
+    default_role: "Web Developer / Designer"
+    bullets: []
+    role_options:
+      - title: "Web Developer / Designer"
+        default: true
+
+  customer_service:
+    company: "Megaplex Theatres, McDonald's, Walmart"
+    dates: "2016 - 2021"
+    default_role: "Customer Service Roles"
+    bullets: []
+    role_options:
+      - title: "Customer Service Roles"
+        default: true
+
+  # freelance:
+  #   company: "Freelance"
+  #   dates: "May 2018 - July 2020"
+  #   default_role: "Web Developer"
+  #   bullets:
+  #     - "Created web extensions for Twitch, reaching 30+ users and focusing on user engagement and platform functionality."
+  #     - "Developed solutions using HTML, CSS, and JavaScript, adhering to industry standards and enhancing user experience."
+  #   role_options:
+  #     - title: "Web Developer"
+  #       default: true
