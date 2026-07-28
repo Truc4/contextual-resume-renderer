@@ -1,0 +1,24 @@
+# Cover letter mappings — RETAIL / SERVICE variant
+# Same schema as data/cover_letter.yaml: each requirement key -> {paragraph: "..."}.
+# _passion is an always-included personalized paragraph. Top 5 matched paragraphs are used.
+
+_passion:
+  paragraph: "I genuinely enjoy work that puts me in front of people. Some of my favorite jobs have been the ones where I got to make someone's day a little easier or better, and I'm looking for a role where being dependable and friendly matters."
+
+customer service:
+  paragraph: "Across five years in retail and food service, I served hundreds of customers a day and learned how to keep guests happy even during the busiest rushes. I stay calm and patient, and I take pride in sending people away satisfied."
+
+team collaboration:
+  paragraph: "I work well as part of a team. I'm the person who covers a station when a coworker is slammed, helps train new hires, and keeps things running smoothly so the whole shift succeeds together."
+
+communication:
+  paragraph: "Whether it's greeting a customer or checking in with a manager, I communicate clearly and with a friendly attitude. I'm comfortable explaining options, answering questions, and keeping everyone on the same page."
+
+reliability:
+  paragraph: "I show up on time, every time, and I can be trusted with responsibilities like opening, closing, and end-of-day cash counts. Reliability is the thing I'd want a manager to remember about me."
+
+problem solving:
+  paragraph: "When something goes wrong at the register or with an order, I handle it on the spot to keep the line moving and the customer happy. I'd rather solve a problem quickly than let it slow everyone down."
+
+adaptability:
+  paragraph: "I've worked ticketing, concessions, food prep, and retail floor roles, often switching between them mid-shift. I pick up new systems and routines fast and adjust to whatever the day throws at me."

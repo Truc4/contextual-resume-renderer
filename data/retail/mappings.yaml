@@ -1,0 +1,98 @@
+# Retail / warehouse mappings — tuned for the Costco Stocker role.
+# Schema (same as data/mappings.yaml):
+#   requirement_name:
+#     skill: true          # include in SKILLS
+#     summary: "text"      # contribute a sentence to SUMMARY
+# Matched against requirements.yaml case-insensitively.
+
+# Core warehouse / stocking duties
+stocking:
+  skill: true
+  summary: "Hands-on stocking experience keeping shelves full and product levels high, stocking opened cases and rotating stock during busy shifts."
+
+merchandising:
+  skill: true
+  summary: "Follows merchandising standards to align product, front and face shelves, return stray items, and keep displays neat and shoppable."
+
+member service:
+  skill: true
+  summary: "Provides a high level of member service, helping shoppers find and load products and answering questions on the floor."
+
+customer service:
+  skill: true
+  summary: "5+ years of friendly, patient customer service across retail and food-service roles."
+
+cash handling:
+  skill: true
+  summary: "Accurately handles cash and card payments and balances a register, with cashier experience at Walgreens and McDonald's."
+
+data entry:
+  skill: true
+  summary: "Fast, accurate data entry, keeping records complete and verifying submitted information for accuracy."
+
+point of sale:
+  skill: true
+  summary: "Comfortable running point-of-sale and ticketing systems for quick, accurate transactions."
+
+problem solving:
+  skill: true
+  summary: "Calmly resolves customer questions and concerns on the spot to keep things moving."
+
+positive attitude:
+  skill: true
+  summary: "Friendly, upbeat presence — a welcoming face for guests even during busy stretches."
+
+safety:
+  skill: true
+  summary: "Follows all safety and security procedures, including proper lifting, safe equipment operation, and keeping aisles clear of hazards."
+
+equipment operation:
+  skill: true
+  summary: "Comfortable operating warehouse equipment such as manual pallet jacks, cardboard balers, and trash compactors, and using box knives safely."
+
+pallet jack:
+  skill: true
+
+reliability:
+  skill: true
+  summary: "Dependable and punctual with open availability, trusted with opening, closing, and cleanup responsibilities."
+
+team collaboration:
+  skill: true
+  summary: "Works closely with coworkers and supervisors to hit merchandising priorities and keep the floor running smoothly."
+
+communication:
+  skill: true
+  summary: "Communicates clearly with supervisors and members to coordinate stocking plans and priorities."
+
+attention to detail:
+  skill: true
+  summary: "Careful and accurate with product placement, labeling, and cleanliness standards."
+
+physical stamina:
+  skill: true
+  summary: "Comfortable with the physical demands of warehouse work: lifting, standing, and moving product throughout a shift."
+
+availability:
+  skill: true
+  summary: "Open availability to meet the needs of the business, including nights and weekends."
+
+# Extras a warehouse posting may list
+warehouse:
+  skill: true
+
+inventory:
+  skill: true
+  summary: "Experience keeping stock organized and levels accurate on the sales floor."
+
+cleaning:
+  skill: true
+  summary: "Keeps the sales floor clean and safe by clearing debris, sweeping, and removing empty pallets and cardboard."
+
+teamwork:
+  skill: true
+  either_or: "team"
+
+# Education content (surfaced via personal.yaml EDUCATION section)
+computer science:
+  education: "Background in Computer Science with strong problem-solving and attention to detail."

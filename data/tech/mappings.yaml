@@ -175,11 +175,11 @@ project management:
 
 communication:
   skill: true
-  summary: "Clear, professional written and verbal communication with clients, coworkers, and outside partners."
+  summary: "Strong technical communication: 8+ open source contributions with issues reported and PRs merged."
 
 problem solving:
   skill: true
-  summary: "Solves problems independently using the resources and tools available, staying calm and practical under pressure."
+  summary: "Analytical problem solving: debugged and resolved 25+ issues across academic and open source projects."
 
 agile:
   skill: true
@@ -496,61 +496,3 @@ real-time systems:
 plugin development:
   skill: true
   summary: "Experience building reusable plugins that integrate networking functionality into larger systems."
-
-# General / transferable (used by the broad general resume)
-data entry:
-  skill: true
-  summary: "Fast, accurate data entry across spreadsheets, forms, and internal systems, with a focus on correctness and consistency."
-
-computer skills:
-  skill: true
-  summary: "Strong general computer skills across spreadsheets, office tools, web applications, and operating systems, with the ability to pick up new software quickly."
-
-time management:
-  skill: true
-  summary: "Manages competing priorities and deadlines effectively, staying organized across multiple tasks."
-
-organization:
-  skill: true
-  summary: "Keeps work, files, and data well organized to stay efficient and reduce errors."
-
-database management:
-  skill: true
-  summary: "Experience managing and querying relational databases, keeping records accurate and consistent."
-
-microsoft excel:
-  skill: true
-  summary: "Proficient with Excel for data entry, formulas, and organizing and validating large sets of records."
-  either_or: "spreadsheets"
-
-google sheets:
-  skill: true
-  summary: "Proficient with Google Sheets for data entry, formulas, and collaborative record keeping."
-  either_or: "spreadsheets"
-
-data validation:
-  skill: true
-  summary: "Validates data for accuracy and completeness, catching and correcting errors before they reach downstream systems."
-
-record management:
-  skill: true
-  summary: "Maintains accurate, well-organized records and keeps data up to date across systems."
-
-data accuracy:
-  skill: true
-  summary: "Meticulous about data accuracy, double-checking entries to keep records reliable and error-free."
-
-reporting:
-  skill: true
-  summary: "Builds clear reports and summaries from raw data to support decisions and track progress."
-
-written procedures:
-  skill: true
-  summary: "Follows and documents written procedures carefully to keep work consistent and repeatable."
-
-customer service:
-  skill: true
-  summary: "Friendly, patient service experience from 5+ years in retail and food-service roles."
-
-confidentiality:
-  summary: "Handles sensitive and confidential information responsibly, following privacy and data-handling standards."

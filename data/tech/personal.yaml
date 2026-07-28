@@ -5,18 +5,16 @@
 # Contact information
 name: "Curt Reyes"
 location: "Logan, Utah"
-email: "curtreyes00@gmail.com"
+email: "curt.reyes.dev@gmail.com"
 phone: "(435) 374-2556"
-# Dev-focused links omitted on non-tech resumes (LinkedIn profile is tech-heavy).
-# Uncomment for technical roles:
-# linkedin: "https://linkedin.com/in/curt-reyes"
-# github: "https://github.com/truc4"
-# portfolio: "https://www.curtreyes.com"
+github: "https://github.com/truc4"
+linkedin: "https://linkedin.com/in/curt-reyes"
+# portfolio: "http://portfolio.curtreyes.com"
+portfolio: "https://www.curtreyes.com"
 
 # Always-shown opening summary line (prepended before contextual summaries)
-# General/all-purpose lead — role-neutral so it fits data entry, admin, and technical roles.
-lead_summary: "Detail-oriented recent graduate with 5+ years of experience across technical fields, known for accuracy, reliability, and picking up new tools quickly."
-# Software-focused alternate:
+lead_summary: "Recent Computer Science graduate seeking first full-time software role, with 5+ years of professional experience from student and internship positions."
+# Part time
 # lead_summary: "Recent Computer Science graduate seeking first full-time software role, with 5+ years of professional experience from student and internship positions."
 
 # Main position title options

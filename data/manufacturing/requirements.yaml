@@ -1,0 +1,25 @@
+# Manufacturing / production variant — for production/processing operator roles
+# (e.g. Cytiva liquid-media operator, Gossner whey processing operator).
+# Tweak the order/title per posting before applying.
+#
+# NOTE: these are TRANSFERABLE strengths Curt genuinely has (from stocking, cashier,
+# and cleaning roles + being a detail-oriented student). GMP / quality-system terms
+# are intentionally NOT listed as owned skills. If you gain relevant experience, add it.
+title: "Production Associate"
+
+# Order = importance. Led with what the JD emphasizes: following procedures,
+# accuracy, documentation, safety, teamwork, and physical/clean-environment work.
+requirements:
+  - name: "Following Procedures"
+  - name: "Problem Solving"
+  - name: "Independent Work"
+  - name: "Attention to Detail"
+  - name: "Cleaning & Sanitation"
+  - name: "Safety"
+  - name: "Documentation"
+  - name: "Reliability"
+  - name: "Team Collaboration"
+  - name: "Quality Standards"
+  - name: "Communication"
+  - name: "Physical Stamina"
+  - name: "MS Office"

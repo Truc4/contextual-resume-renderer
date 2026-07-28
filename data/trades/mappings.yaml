@@ -1,0 +1,54 @@
+# Trades / hands-on labor mappings — tuned for the landscape PM-in-training role.
+# Honest transferable framing only — no landscape/irrigation claims.
+
+reliability:
+  skill: true
+  summary: "Dependable and punctual with a strong work ethic, trusted to show up and get the job done."
+
+problem solving:
+  skill: true
+  summary: "Solves problems and makes sound decisions in the field using the tools and resources available."
+
+customer service:
+  skill: true
+  summary: "5+ years of customer-facing experience delivering friendly, professional service."
+
+communication:
+  skill: true
+  summary: "Communicates clearly and professionally with customers, coworkers, and supervisors."
+
+organization:
+  skill: true
+  summary: "Organizes tasks, schedules, and priorities to keep work on track in fast-paced settings."
+
+leadership potential:
+  skill: true
+  summary: "Emerging leadership experience — led an academic team project and trained new coworkers — with the drive to grow into managing crews."
+
+time management:
+  skill: true
+  summary: "Manages multiple priorities and deadlines effectively without losing quality."
+
+team collaboration:
+  skill: true
+  summary: "Works well on a team, pitching in and coordinating with coworkers to get the job done."
+
+safety:
+  skill: true
+  summary: "Follows safety procedures and keeps a safe, clean work area on the job."
+
+fast learner:
+  skill: true
+  summary: "Picks up new tools, systems, and skills quickly and is eager to learn the landscape and irrigation trade."
+
+physical stamina:
+  skill: true
+  summary: "Comfortable with physically demanding, hands-on outdoor and manual work throughout a shift."
+
+computer skills:
+  skill: true
+  summary: "Comfortable with computers and smartphones, including apps and software for scheduling and documentation."
+
+# Education content (surfaced via personal.yaml EDUCATION section)
+computer science:
+  education: "Background in Computer Science with strong problem-solving, organization, and attention to detail."

@@ -3,14 +3,31 @@
 
 source venv/bin/activate
 
-# Auto-detect requirements file
-if [ -f "data/requirements.yaml" ]; then
-  REQUIREMENTS_FILE="data/requirements.yaml"
-elif [ -f "data/requirements.txt" ]; then
-  REQUIREMENTS_FILE="data/requirements.txt"
-else
-  echo "Error: No requirements file found (data/requirements.yaml or data/requirements.txt)"
-  exit 1
+# Optional leading variant token (not a flag): a variant name or an explicit path.
+#   ./cover_letter          -> general (data/requirements.yaml)
+#   ./cover_letter retail   -> data/retail/requirements.yaml
+REQUIREMENTS_FILE=""
+if [[ $# -gt 0 && "$1" != -* ]]; then
+  if [ -f "$1" ]; then
+    REQUIREMENTS_FILE="$1"; shift
+  elif [ -f "data/$1/requirements.yaml" ]; then
+    REQUIREMENTS_FILE="data/$1/requirements.yaml"; shift
+  else
+    echo "Error: unknown variant or file '$1' (expected data/$1/requirements.yaml)"
+    exit 1
+  fi
+fi
+
+# Auto-detect requirements file (general default)
+if [ -z "$REQUIREMENTS_FILE" ]; then
+  if [ -f "data/requirements.yaml" ]; then
+    REQUIREMENTS_FILE="data/requirements.yaml"
+  elif [ -f "data/requirements.txt" ]; then
+    REQUIREMENTS_FILE="data/requirements.txt"
+  else
+    echo "Error: No requirements file found (data/requirements.yaml or data/requirements.txt)"
+    exit 1
+  fi
 fi
 
 python cover_letter.py "$REQUIREMENTS_FILE" "$@"

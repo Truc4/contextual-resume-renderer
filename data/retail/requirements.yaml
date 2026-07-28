@@ -1,0 +1,33 @@
+# Retail / service variant.
+# 'title' sets the header title; leave "" for name-only.
+# Currently tuned for: Cache County Fair — Cashier / Data Entry / Vendor Support.
+title: "Cashier"
+
+# Order = importance. Cashier + customer service, also covering the data-entry role.
+requirements:
+  - name: "Customer Service"
+  - name: "Cash Handling"
+  - name: "Communication"
+  - name: "Reliability"
+  - name: "Attention to Detail"
+  - name: "Data Entry"
+  - name: "Point of Sale"
+  - name: "Team Collaboration"
+  - name: "Problem Solving"
+  - name: "Positive Attitude"
+  - name: "Physical Stamina"
+
+# --- Costco stocker list (restore by swapping back in) ---
+# title: "Stocking Associate"
+# requirements:
+#   - name: "Stocking"
+#   - name: "Merchandising"
+#   - name: "Member Service"
+#   - name: "Safety"
+#   - name: "Equipment Operation"
+#   - name: "Reliability"
+#   - name: "Team Collaboration"
+#   - name: "Communication"
+#   - name: "Attention to Detail"
+#   - name: "Physical Stamina"
+#   - name: "Availability"

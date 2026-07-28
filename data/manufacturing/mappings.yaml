@@ -1,0 +1,67 @@
+# Manufacturing / production mappings — tuned for the Cytiva operator role.
+# Schema (same as data/mappings.yaml):
+#   requirement_name:
+#     skill: true          # include in SKILLS
+#     summary: "text"      # contribute a sentence to SUMMARY
+# Framed honestly around transferable retail/warehouse/cleaning experience.
+
+following procedures:
+  skill: true
+  summary: "Reliably reads and follows work policies, written instructions, and verbal direction to complete tasks correctly and consistently."
+
+problem solving:
+  skill: true
+  summary: "Troubleshoots problems as they come up and makes sound decisions to keep work moving, escalating when needed."
+
+independent work:
+  skill: true
+  summary: "Self-motivated and dependable working with limited supervision, staying on task and taking initiative through a shift."
+
+attention to detail:
+  skill: true
+  summary: "Careful and accurate in hands-on work, catching errors and holding product and work areas to standard."
+
+documentation:
+  skill: true
+  summary: "Comfortable following and completing written procedures and checklists accurately, with strong general documentation habits."
+
+safety:
+  skill: true
+  summary: "Follows safety and EHS procedures, including proper lifting and safe equipment handling, to keep the work area clean and hazard-free."
+
+quality standards:
+  skill: true
+  summary: "Works to meet quality and cleanliness standards, identifying and correcting issues before they move downstream."
+
+team collaboration:
+  skill: true
+  summary: "Communicates and works well with team leads, supervisors, and coworkers to keep work moving and improve how things run."
+
+communication:
+  skill: true
+  summary: "Clear communicator with supervisors and teammates, comfortable asking questions and confirming instructions."
+
+reliability:
+  skill: true
+  summary: "Dependable and punctual with open availability, trusted with opening, closing, and end-of-shift responsibilities."
+
+physical stamina:
+  skill: true
+  summary: "Comfortable with physically demanding work: frequent lifting, carrying, standing, bending, and moving product throughout a shift."
+
+cleaning & sanitation:
+  skill: true
+  summary: "Extensive experience cleaning and sanitizing work areas to standard — sweeping, wiping down, and resetting spaces on tight turnarounds."
+
+ms office:
+  skill: true
+  summary: "Comfortable with MS Office and general computer tools for documentation and record keeping."
+
+# Willingness / transferable extras
+learning agility:
+  skill: true
+  summary: "Picks up new tools, systems, and procedures quickly and completes required training on time."
+
+# Education content (surfaced via personal.yaml EDUCATION section)
+computer science:
+  education: "Background in Computer Science with strong problem-solving, documentation, and attention to detail."

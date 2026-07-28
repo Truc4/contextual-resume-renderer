@@ -1,0 +1,19 @@
+# Tech variant — tuned for Noblis "Software Developer - User Interface (UI)",
+# Reston, VA (job 26324). UI/frontend focus + the JD's required languages,
+# database, testing, SDLC, and desired cloud.
+title: "Software Developer"
+
+requirements:
+  - name: "Frontend Developer"
+  - name: "TypeScript"
+  - name: "JavaScript"
+  - name: "React"
+  - name: "Angular"
+  - name: "Python"
+  - name: "PostgreSQL"
+  - name: "API Development"
+  - name: "Testing"
+  - name: "Git"
+  - name: "AWS"
+  - name: "SDLC"
+  - name: "Azure"

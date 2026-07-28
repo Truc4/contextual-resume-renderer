@@ -1,0 +1,23 @@
+# Trades / hands-on labor + crew-lead variant.
+# Currently tuned for: By Design Landscapes — Landscape Project Manager in Training.
+#
+# HONEST FRAMING: Curt has NO landscape, irrigation, or construction experience.
+# This resume leads with genuine transferable strengths and eagerness to learn the
+# trade (the "in Training" path). Do NOT add irrigation/landscape/crew-lead skills
+# that aren't real.
+title: ""
+
+# Order = importance. Led with the transferable skills the JD also asks for.
+requirements:
+  - name: "Reliability"
+  - name: "Problem Solving"
+  - name: "Customer Service"
+  - name: "Communication"
+  - name: "Organization"
+  - name: "Leadership Potential"
+  - name: "Time Management"
+  - name: "Team Collaboration"
+  - name: "Safety"
+  - name: "Fast Learner"
+  - name: "Physical Stamina"
+  - name: "Computer Skills"

@@ -1,0 +1,74 @@
+# Personal Resume Data — MANUFACTURING / PRODUCTION variant
+# Tuned for the Cytiva (Danaher) production operator role: reuses the same
+# hands-on work history, framed around following procedures, safety, cleaning,
+# reliability, and teamwork.
+
+# Contact information
+name: "Curt Reyes"
+location: "Logan, Utah"
+email: "curtreyes00@gmail.com"
+phone: "(435) 374-2556"
+
+# Always-shown opening summary line
+lead_summary: "Dependable, detail-oriented worker with 5+ years of hands-on retail, stocking, and cleaning experience, comfortable following procedures and safety standards, lifting and unloading throughout a shift, and working closely with a team."
+
+# Header title comes from requirements.yaml ('title'); main_position is a fallback.
+main_position:
+  default: "Production Associate"
+  options:
+    - title: "Production Associate"
+      default: true
+
+education:
+  bachelor:
+    school: "Utah State University"
+    degree: "Bachelor's in Computer Science"
+    graduation_date: "April 2026"
+
+jobs:
+  walmart:
+    company: "Walmart"
+    dates: "2020 - 2021"
+    default_role: "Stocker / Sales Floor Associate"
+    bullets:
+      - "Stocked and faced merchandise across multiple departments, keeping shelves full and product neatly aligned during high-volume shifts."
+      - "Moved pallets of product to the floor with manual pallet jacks, broke down opened cases, and stocked to maintain high product levels."
+      - "Followed safety procedures for lifting, box knives, and equipment; broke down cardboard and cleared debris to keep aisles clean and safe."
+    role_options:
+      - title: "Stocker / Sales Floor Associate"
+        default: true
+
+  walgreens:
+    company: "Walgreens"
+    dates: "2019"
+    default_role: "Cashier / Retail Associate"
+    bullets:
+      - "Ran the register and assisted customers at checkout, handling cash and card payments accurately."
+      - "Restocked and faced shelves to keep product organized and levels high on the sales floor."
+      - "Kept the store clean and presentable, cleaning up spills, debris, and work areas throughout each shift."
+    role_options:
+      - title: "Cashier / Retail Associate"
+        default: true
+
+  mcdonalds:
+    company: "McDonald's & Megaplex Theatres"
+    dates: "2016 - 2019"
+    default_role: "Crew Member / Cleaning"
+    bullets:
+      - "Ran register and drive-through at McDonald's, handling cash and card payments quickly and accurately during rushes."
+      - "Cleaned and reset theatres and dining areas between rushes."
+      - "Worked as part of a team to hit turnaround deadlines and keep stations and common areas clean and presentable."
+    role_options:
+      - title: "Crew Member / Cleaning"
+        default: true
+
+  tech:
+    company: "USU Research Centers & Internships"
+    dates: "2021 - Present"
+    default_role: "Software / Web Developer"
+    bullets:
+      - "Built and maintained websites and internal tools while working a full course load."
+      - "Coordinated with coworkers and communicated clearly with non-technical staff to deliver on-time results."
+    role_options:
+      - title: "Software / Web Developer"
+        default: true

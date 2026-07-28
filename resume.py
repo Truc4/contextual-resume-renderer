@@ -115,6 +115,12 @@ def load_contextual_resume(requirements_file, mappings_file, roles_file=None, pe
     # Parse requirements (support both YAML and plain text formats)
     requirements_data = yaml.safe_load(requirements_path.read_text())
 
+    # Optional explicit header title set directly in the requirements file.
+    # When the 'title' key is present it fully controls the header title
+    # (an empty value renders no title), overriding main_position selection.
+    has_title_override = isinstance(requirements_data, dict) and 'title' in requirements_data
+    title_override = requirements_data.get('title') if has_title_override else None
+
     if isinstance(requirements_data, dict) and 'requirements' in requirements_data:
         # YAML format
         requirements_list = requirements_data['requirements']
@@ -163,11 +169,15 @@ def load_contextual_resume(requirements_file, mappings_file, roles_file=None, pe
     summaries_with_importance = []
     skills_with_importance = []
 
-    # Select main position title based on requirements
-    # Check personal_data first, then roles_data for backwards compatibility
-    main_position_data = personal_data.get('main_position') or roles_data.get('main_position')
-    if main_position_data:
-        data['position'] = select_option(main_position_data['options'], requirements, importance_map)
+    # Select main position title based on requirements.
+    # Precedence: explicit 'title' in requirements file > main_position selection > default.
+    if has_title_override:
+        data['position'] = title_override or ''  # empty string hides the title in the template
+    else:
+        # Check personal_data first, then roles_data for backwards compatibility
+        main_position_data = personal_data.get('main_position') or roles_data.get('main_position')
+        if main_position_data:
+            data['position'] = select_option(main_position_data['options'], requirements, importance_map)
 
     # Process each requirement for summaries and skills
     for req in requirements:
