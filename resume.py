@@ -224,13 +224,18 @@ def load_contextual_resume(requirements_file, mappings_file, roles_file=None, pe
     skills_with_importance.sort(key=lambda x: x['importance'], reverse=True)
     data['skills'] = [s['name'] for s in skills_with_importance[:10]]
 
-    # Build jobs list with selected role titles from personal data
+    # Build jobs list with static role titles from personal data.
+    # Dynamic role selection is disabled: use the job's 'role'/'default_role'.
+    # (Legacy 'role_options' is only consulted if no static role is set.)
     if personal_data.get('jobs'):
         for job_key, job_config in personal_data['jobs'].items():
+            role = job_config.get('role') or job_config.get('default_role')
+            if not role and job_config.get('role_options'):
+                role = select_option(job_config['role_options'], requirements, importance_map)
             job = {
                 'company': job_config['company'],
                 'dates': job_config['dates'],
-                'role': select_option(job_config['role_options'], requirements, importance_map),
+                'role': role,
                 'bullets': job_config['bullets']
             }
             data['jobs'].append(job)

@@ -148,7 +148,7 @@ react:
 vue:
   skill: true
 
-nodejs:
+node.js:
   skill: true
 
 docker:
@@ -199,6 +199,23 @@ api development:
 # Testing / Engineering Practices
 testing:
   skill: true
+  summary: "Hands-on testing experience across academic and open source projects, including writing and executing tests and following defects through to resolution."
+
+quality assurance:
+  skill: true
+  summary: "Solid understanding of QA methodology and the software development lifecycle, with a focus on shipping well-tested, high-quality software."
+
+test automation:
+  skill: true
+  summary: "Builds and maintains automated tests and wires them into CI/CD pipelines to catch regressions before release."
+
+jira:
+  skill: true
+  summary: "Experience tracking bugs and tasks with JIRA and other issue trackers, including GitHub/GitLab Issues and self-hosted tools."
+
+test cases:
+  skill: true
+  summary: "Writes and executes test cases and test plans to validate features and catch regressions before release."
 
 test-driven development:
   skill: true

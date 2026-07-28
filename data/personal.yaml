@@ -86,7 +86,7 @@ jobs:
   ncham:
     company: "National Center for Hearing Assessment and Management"
     dates: "August 2022 - January 2026"
-    default_role: "Student .NET Developer"
+    default_role: "Software Developer"
     bullets:
       - "Primary developer for a data aggregation platform serving 40+ healthcare agencies across multiple states."
       - "Implemented backend services in .NET to aggregate and process shared datasets of over 100 records per request, delivering 300+ production features and fixes."

@@ -49,6 +49,9 @@ education:
     school: "Utah State University"
     degree: "Bachelor's in Computer Science"
     graduation_date: "April 2026"
+    bullets:
+      - "Gravitated toward the systems side of CS, high-performance computing and data engineering."
+      - "Focused my personal work on performance optimization: native libraries, language bindings, and data-oriented systems with explicit memory management and profiling."
 
 jobs:
   aspire:
@@ -56,9 +59,9 @@ jobs:
     dates: "March 2026 - Present"
     default_role: "Software Developer"
     bullets:
-      - "Rebuilt the center's public website from the ground up, modernizing 10+ pages and improving page load performance by 40%."
-      - "Developed an internal reporting dashboard that reduced manual data entry effort by ~50% and cut routine report generation from hours to minutes."
-      - "Designed and deployed data APIs powering 6+ internal widgets and tools, improving data accuracy and eliminating duplicate entry across systems."
+      - "Built internal tools and dashboards with React, Vue, and Angular front-ends, cutting manual data entry ~50% and routine report generation from hours to minutes."
+      - "Designed and deployed data APIs and services in Node.js, Go, Rust (Axum), and Python (FastAPI) over PostgreSQL and MySQL, powering 6+ internal widgets and eliminating duplicate data entry across systems."
+      - "Rebuilt the center's public website in WordPress with custom HTML, CSS, and JavaScript, modernizing 10+ pages and improving page load performance by 40%."
     role_options:
       - title: "Software Developer"
         default: true
@@ -84,7 +87,7 @@ jobs:
   ncham:
     company: "National Center for Hearing Assessment and Management"
     dates: "August 2022 - January 2026"
-    default_role: "Student .NET Developer"
+    default_role: "Software Developer"
     bullets:
       - "Primary developer for a data aggregation platform serving 40+ healthcare agencies across multiple states."
       - "Implemented backend services in .NET to aggregate and process shared datasets of over 100 records per request, delivering 300+ production features and fixes."

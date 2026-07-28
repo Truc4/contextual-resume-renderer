@@ -1,19 +1,35 @@
-# Tech variant — tuned for Noblis "Software Developer - User Interface (UI)",
-# Reston, VA (job 26324). UI/frontend focus + the JD's required languages,
-# database, testing, SDLC, and desired cloud.
-title: "Software Developer"
+# Tech variant — tuned for iWorQ "Quality Assurance Engineer", Logan, UT.
+# Technical QA role that wants a real dev background: automation frameworks,
+# CI/CD, code review, reading code, web-app testing.
+title: "Quality Assurance Engineer"
 
 requirements:
-  - name: "Frontend Developer"
-  - name: "TypeScript"
-  - name: "JavaScript"
-  - name: "React"
-  - name: "Angular"
-  - name: "Python"
-  - name: "PostgreSQL"
-  - name: "API Development"
+  - name: "Quality Assurance"
   - name: "Testing"
-  - name: "Git"
-  - name: "AWS"
+  - name: "Test Automation"
+  - name: "Test Cases"
+  - name: "JavaScript"
+  - name: "CI/CD"
+  - name: "Code Review"
+  - name: "Debugging"
   - name: "SDLC"
-  - name: "Azure"
+  - name: "Jira"
+  - name: "Performance Optimization"
+  - name: "Agile"
+  - name: "Attention to Detail"
+
+# --- Socket full-stack list (restore by swapping back in) ---
+# title: "Full Stack Engineer"
+# requirements:
+#   - name: "TypeScript"
+#   - name: "JavaScript"
+#   - name: "React"
+#   - name: "Node.js"
+#   - name: "API Development"
+#   - name: "PostgreSQL"
+#   - name: "Data Integration"
+#   - name: "Data Transformation"
+#   - name: "Web Scraping"
+#   - name: "Git"
+#   - name: "Adaptability"
+#   - name: "Testing"
