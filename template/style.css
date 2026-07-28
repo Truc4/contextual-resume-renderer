@@ -78,9 +78,13 @@ h2 {
 }
 
 .job-role {
-  font-weight: bold;
+  font-style: italic;
   margin-top: 2pt;
   margin-bottom: 3pt;
+}
+
+.edu-bullets {
+  margin-top: 3pt;
 }
 
 .job-bullets {
