@@ -23,11 +23,27 @@
   </div>
 </header>
 
-<!-- SUMMARY -->
-{% if summaries %}
+<!-- EDUCATION -->
+{% if education %}
 <section>
-  <h2>SUMMARY</h2>
-  <p>{{ summaries | join(" ") }}</p>
+  <h2>EDUCATION</h2>
+  {% if education.bachelor %}
+  <div class="education">
+    <div class="education-header">
+      <div class="education-school">
+        <strong>{{ education.bachelor.school }}</strong> - <strong>{{ education.bachelor.degree }}</strong>
+      </div>
+      {% if education.bachelor.graduation_date %}<div class="education-date">{{ education.bachelor.graduation_date }}</div>{% endif %}
+    </div>
+    {% if education.bachelor.bullets %}
+    <ul class="job-bullets edu-bullets">
+      {% for bullet in education.bachelor.bullets %}
+      <li>{{ bullet }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+  {% endif %}
 </section>
 {% endif %}
 
@@ -61,23 +77,6 @@
   {% endfor %}
 
 </section>
-
-<!-- EDUCATION -->
-{% if education %}
-<section>
-  <h2>EDUCATION</h2>
-  {% if education.bachelor %}
-  <div class="education">
-    <div class="education-header">
-      <div class="education-school">
-        <strong>{{ education.bachelor.school }}</strong> - <strong>{{ education.bachelor.degree }}</strong>
-      </div>
-      {% if education.bachelor.graduation_date %}<div class="education-date">{{ education.bachelor.graduation_date }}</div>{% endif %}
-    </div>
-  </div>
-  {% endif %}
-</section>
-{% endif %}
 
 </body>
 </html>
